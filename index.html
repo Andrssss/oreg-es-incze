@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Öreg és Incze – Zongora Szállítás</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -73,15 +74,14 @@
       height: 70px;
     }
     .nav-logo {
-      display: flex;
-      align-items: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--white);
       text-decoration: none;
     }
-    .nav-logo img {
-      height: 54px;
-      width: auto;
-      display: block;
-    }
+    .nav-logo span { color: var(--accent); }
     .nav-links {
       display: flex;
       gap: 36px;
@@ -666,7 +666,7 @@
   <button class="menu-toggle" type="button" aria-label="Mobil menu" aria-expanded="false">
     <span></span>
   </button>
-  <a class="nav-logo" href="#hero"><img src="logo.svg" alt="Öreg és Incze – Zongora Szállítás" /></a>
+  <a class="nav-logo" href="#hero">ÖREG <span>&</span> INCZE</a>
   <ul class="nav-links">
     <li><a href="#rolunk" data-i18n="nav_about">Rólunk</a></li>
     <li><a href="#arak" data-i18n="nav_prices">Árlista</a></li>
