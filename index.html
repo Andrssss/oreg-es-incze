@@ -73,14 +73,15 @@
       height: 70px;
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: var(--white);
+      display: flex;
+      align-items: center;
       text-decoration: none;
     }
-    .nav-logo span { color: var(--accent); }
+    .nav-logo img {
+      height: 54px;
+      width: auto;
+      display: block;
+    }
     .nav-links {
       display: flex;
       gap: 36px;
@@ -665,7 +666,7 @@
   <button class="menu-toggle" type="button" aria-label="Mobil menu" aria-expanded="false">
     <span></span>
   </button>
-  <a class="nav-logo" href="#hero">ÖREG <span>&</span> INCZE</a>
+  <a class="nav-logo" href="#hero"><img src="logo.svg" alt="Öreg és Incze – Zongora Szállítás" /></a>
   <ul class="nav-links">
     <li><a href="#rolunk" data-i18n="nav_about">Rólunk</a></li>
     <li><a href="#arak" data-i18n="nav_prices">Árlista</a></li>
