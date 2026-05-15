@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Öreg és Incze – Zongora Szállítás</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --off-black: #111111;
+      --dark-gray: #1a1a1a;
+      --mid-gray: #2e2e2e;
+      --light-gray: #9a9a9a;
+      --silver: #bbb;
+      --white: #f5f5f0;
+      --pure-white: #ffffff;
+      --accent: #c8a96e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--black);
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── PIANO KEYS DECORATIVE BORDER ── */
+    .piano-keys {
+      display: flex;
+      height: 60px;
+      width: 100%;
+      overflow: hidden;
+    }
+    .piano-keys .white-key {
+      flex: 1;
+      background: var(--pure-white);
+      border: 1px solid #333;
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      position: relative;
+    }
+    .piano-keys .black-key {
+      position: absolute;
+      width: 60%;
+      height: 60%;
+      background: var(--off-black);
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 0 0 3px 3px;
+      z-index: 2;
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #222;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--silver);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 3.2px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid #3a3a3a;
+      background: #0f0f0f;
+      color: var(--pure-white);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--pure-white);
+      position: relative;
+    }
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background: var(--pure-white);
+    }
+    .menu-toggle span::before { top: -6px; }
+    .menu-toggle span::after { top: 6px; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .lang-switch {
+      display: inline-flex;
+      border: 2px solid #4a4a4a;
+      border-radius: 0;
+      overflow: hidden;
+      background: #0b0b0b;
+      box-shadow: 0 0 0 1px #1a1a1a;
+    }
+    .lang-btn {
+      border: 0;
+      background: transparent;
+      color: #d5d5d5;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 11px 16px;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+    }
+    .lang-btn:hover { color: var(--white); }
+    .lang-btn.active {
+      background: var(--pure-white);
+      color: var(--black);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 40px 80px;
+      position: relative;
+      background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 70%);
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 27px,
+          rgba(255,255,255,0.015) 27px,
+          rgba(255,255,255,0.015) 28px
+        );
+      pointer-events: none;
+    }
+    .hero-tag {
+      font-size: 0.72rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--pure-white);
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+    .hero-title .amp {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: var(--silver);
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+    }
+    .hero-divider {
+      width: 80px;
+      height: 1px;
+      background: var(--accent);
+      margin: 0 auto 40px;
+    }
+    .hero-desc {
+      max-width: 560px;
+      color: var(--silver);
+      font-size: 0.98rem;
+      line-height: 1.9;
+      margin-bottom: 50px;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 42px;
+      border: 1px solid var(--white);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn-primary:hover {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    /* ── YAMAHA KEYS STRIP ── */
+    .keys-strip {
+      display: flex;
+      height: 40px;
+      width: 100%;
+      background: #111;
+      overflow: hidden;
+      position: relative;
+    }
+    .key-w {
+      flex: 0 0 28px;
+      background: #f0f0f0;
+      border-left: 1px solid #aaa;
+      border-right: 1px solid #aaa;
+      border-bottom: 2px solid #888;
+      border-radius: 0 0 3px 3px;
+      position: relative;
+    }
+    .key-b {
+      flex: 0 0 18px;
+      background: #111;
+      margin-left: -9px;
+      margin-right: -9px;
+      z-index: 2;
+      border-radius: 0 0 2px 2px;
+      height: 70%;
+    }
+
+    /* ── SECTION STYLES ── */
+    section { padding: 100px 40px; }
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: var(--pure-white);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .section-line {
+      width: 50px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 40px;
+    }
+
+    /* ── ABOUT ── */
+    #rolunk {
+      background: var(--off-black);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-text p {
+      color: var(--silver);
+      font-size: 0.97rem;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .about-features {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .feature-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .feature-icon {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--pure-white);
+      opacity: 0.95;
+    }
+    .feature-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .feature-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--pure-white);
+      margin-bottom: 6px;
+    }
+    .feature-desc {
+      font-size: 0.88rem;
+      color: var(--silver);
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    #szolgaltatasok {
+      background: var(--black);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+    }
+    .service-card {
+      background: var(--dark-gray);
+      padding: 44px 32px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s, background 0.3s;
+      cursor: default;
+    }
+    .service-card:hover {
+      border-color: var(--accent);
+      background: #1f1f1f;
+    }
+    .service-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: #222;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--pure-white);
+      margin-bottom: 14px;
+    }
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--silver);
+      line-height: 1.8;
+    }
+
+    /* ── YAMAHA BADGE ── */
+    .yamaha-strip {
+      background: var(--mid-gray);
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .yamaha-strip .section-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .yamaha-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: 16px;
+      color: var(--pure-white);
+      text-transform: uppercase;
+      opacity: 0.12;
+    }
+    .yamaha-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-style: italic;
+      color: var(--white);
+    }
+    .yamaha-sub {
+      font-size: 0.88rem;
+      color: var(--silver);
+      max-width: 600px;
+      line-height: 1.9;
+      text-align: center;
+    }
+
+    /* ── PRICES ── */
+    #arak {
+      background: var(--off-black);
+    }
+    .price-notice {
+      display: inline-block;
+      border: 1px solid #333;
+      padding: 8px 20px;
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      color: var(--light-gray);
+      text-transform: uppercase;
+      margin-bottom: 50px;
+    }
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.93rem;
+    }
+    .price-table thead th {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 14px 20px;
+      text-align: left;
+      border-bottom: 1px solid #2a2a2a;
+    }
+    .price-table tbody tr {
+      border-bottom: 1px solid #1e1e1e;
+      transition: background 0.2s;
+    }
+    .price-table tbody tr:hover { background: #161616; }
+    .price-table tbody td {
+      padding: 20px 20px;
+      color: var(--silver);
+      vertical-align: top;
+    }
+    .price-table .service-col {
+      font-family: 'Playfair Display', serif;
+      color: var(--pure-white);
+      font-size: 1rem;
+    }
+    .price-table .price-col {
+      color: var(--accent);
+      font-weight: 700;
+      white-space: nowrap;
+      font-size: 1rem;
+    }
+    .price-table .note-col {
+      color: var(--silver);
+      font-size: 0.83rem;
+    }
+    .price-disclaimer {
+      margin-top: 30px;
+      font-size: 0.82rem;
+      color: var(--silver);
+      font-style: italic;
+    }
+
+    /* ── NATIONWIDE ── */
+    #orszagszerte {
+      background: var(--black);
+      text-align: center;
+    }
+    #orszagszerte .section-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #orszagszerte .section-line { margin: 0 auto 40px; }
+    .cities-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      justify-content: center;
+      margin-top: 50px;
+      border: 1px solid #1e1e1e;
+    }
+    .city-item {
+      padding: 20px 32px;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--silver);
+      border: 1px solid #1a1a1a;
+      transition: color 0.3s, background 0.3s;
+    }
+    .city-item:hover {
+      color: var(--white);
+      background: #141414;
+    }
+    .nationwide-desc {
+      max-width: 620px;
+      color: var(--silver);
+      font-size: 0.95rem;
+      line-height: 1.9;
+      margin-top: 20px;
+    }
+
+    /* ── CONTACT ── */
+    #kapcsolat {
+      background: var(--off-black);
+      border-top: 1px solid #1c1c1c;
+    }
+    .contact-inner { text-align: center; }
+    .contact-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 50px 30px;
+      border-top: 1px solid #232323;
+      border-bottom: 1px solid #232323;
+    }
+    .contact-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      text-decoration: none;
+      width: 100%;
+      color: var(--pure-white);
+      transition: opacity 0.3s;
+    }
+    .contact-line:hover { opacity: 0.78; }
+    .contact-logo {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      opacity: 0.9;
+    }
+    .contact-logo svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .contact-text {
+      text-align: left;
+    }
+    .contact-value-big {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.35rem, 3vw, 2.3rem);
+      font-weight: 700;
+      color: var(--pure-white);
+      letter-spacing: 1px;
+      line-height: 1.1;
+    }
+    @media (max-width: 760px) {
+      .contact-stack {
+        gap: 22px;
+        padding: 36px 18px;
+      }
+      .contact-value-big {
+        font-size: clamp(1.1rem, 6vw, 1.7rem);
+      }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid #1a1a1a;
+      padding: 30px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #555;
+    }
+    .footer-logo span { color: #666; font-style: italic; }
+    .footer-copy {
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      color: #444;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 20px; }
+      section { padding: 70px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 600px) {
+      .menu-toggle {
+        display: inline-flex;
+      }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        border-bottom: 1px solid #222;
+        padding: 16px 20px 18px;
+        flex-direction: column;
+        gap: 14px;
+      }
+      nav.menu-open .nav-links {
+        display: flex;
+      }
+      .nav-links a {
+        display: block;
+        font-size: 0.98rem;
+        font-weight: 700;
+        letter-spacing: 2.8px;
+      }
+      .lang-btn {
+        font-size: 0.76rem;
+        padding: 10px 13px;
+      }
+      .services-grid { grid-template-columns: 1fr; }
+      .price-table thead th:last-child,
+      .price-table tbody td:last-child { display: none; }
+      footer { flex-direction: column; gap: 10px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <button class="menu-toggle" type="button" aria-label="Mobil menu" aria-expanded="false">
+    <span></span>
+  </button>
+  <a class="nav-logo" href="#hero">ÖREG <span>&</span> INCZE</a>
+  <ul class="nav-links">
+    <li><a href="#rolunk" data-i18n="nav_about">Rólunk</a></li>
+    <li><a href="#arak" data-i18n="nav_prices">Árlista</a></li>
+    <li><a href="#kapcsolat" data-i18n="nav_contact">Kapcsolat</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-switch" aria-label="Language switch">
+      <button class="lang-btn active" data-lang="hu" type="button">HU</button>
+      <button class="lang-btn" data-lang="en" type="button">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-tag" data-i18n="hero_tag">Professzionális zongora szállítás</p>
+  <h1 class="hero-title">ÖREG <span class="amp">&amp;</span> INCZE</h1>
+  <p class="hero-subtitle" data-i18n="hero_subtitle">Zongora Szállítás – Pontosan, Biztonságosan</p>
+  <div class="hero-divider"></div>
+  <p class="hero-desc" data-i18n="hero_desc">
+    Yamaha zongorák és pianínók szakszerű szállítása magánszemélyeknek, 
+    zeneiskoláknak és hangversenyrendezőknek. Tapasztalat, amelyre számíthat.
+  </p>
+  <a href="#arak" class="btn-primary" data-i18n="hero_button">Árlista</a>
+</section>
+
+<!-- PIANO KEYS STRIP -->
+<div class="keys-strip" aria-hidden="true">
+  <!-- Generated with JS below -->
+</div>
+
+<!-- ABOUT -->
+<section id="rolunk">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-tag" data-i18n="about_tag">Rólunk</p>
+        <h2 class="section-title" data-i18n-html="about_title">Megszólal <em>minden</em> hangszer</h2>
+        <div class="section-line"></div>
+        <p data-i18n="about_p1">
+          Az Öreg &amp; Incze zongora szállítás több mint egy fuvarozó cég – mi zongorásokat 
+          szeretünk és hangszereket értünk. Minden szállítmány mögött ott a tapasztalat, 
+          hogy egy Yamaha grand vagy pianínó nem csupán bútordarab, hanem finom 
+          mechanika, érzékeny fa és évtizednyi hangolás összessége.
+        </p>
+        <p data-i18n="about_p2">
+          Alapítóink saját zenei hátterükből merítve hozták létre ezt a szolgáltatást, 
+          mert látták: a piacon hiányzik a valóban hangszer-tudatos szállítás. 
+          Azóta minden fuvar egy ígéret: a hangszer ugyanolyan állapotban érkezik meg, 
+          mint ahogy elindult.
+        </p>
+      </div>
+      <div class="about-features">
+        <div class="feature-item">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="5" width="18" height="14" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M7 5v14M11 5v14M15 5v14" stroke="currentColor" stroke-width="1.3"/>
+              <path d="M9 5v8M13 5v8M17 5v8" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="feature-title" data-i18n="feat_1_t">Yamaha specialisták</div>
+            <div class="feature-desc" data-i18n="feat_1_d">Elsősorban Yamaha grand és upright zongorákra specializálódtunk – ismerjük a méretek, tömegek és mechanika minden részletét.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="feature-title" data-i18n="feat_2_t">Biztosított szállítás</div>
+            <div class="feature-desc" data-i18n="feat_2_d">Minden fuvar biztosítással rendelkezik. A hangszer értékének megfelelő fedezet, kiegészítő biztosítás igény esetén.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.5 5.5a4 4 0 0 0-5 5l-5.4 5.4a1.5 1.5 0 0 0 2.1 2.1l5.4-5.4a4 4 0 0 0 5-5l-2.4 2.4-2.1-2.1 2.4-2.4z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="feature-title" data-i18n="feat_3_t">Szállítás utáni hangolás</div>
+            <div class="feature-desc" data-i18n="feat_3_d">Szállítás után ajánljuk partnerhangoló szakembereinket – a hangszer életre kel az új helyen is.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 7h12v8H3z" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M15 10h3l3 3v2h-6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <circle cx="7" cy="17" r="2" stroke="currentColor" stroke-width="1.6"/>
+              <circle cx="18" cy="17" r="2" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <div>
+            <div class="feature-title" data-i18n="feat_4_t">Országos lefedettség</div>
+            <div class="feature-desc" data-i18n="feat_4_d">Budapest és vidék között, városon belül, vagy akár határon átnyúló szállítás egyedi megállapodással.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICES -->
+<section id="arak">
+  <div class="section-inner">
+    <p class="section-tag" data-i18n="prices_tag">Árlista</p>
+    <h2 class="section-title" data-i18n-html="prices_title">Tájékoztató <em>áraink</em></h2>
+    <div class="section-line"></div>
+
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th data-i18n="th_service">Szolgáltatás</th>
+          <th data-i18n="th_price">Ár (bruttó)</th>
+          <th data-i18n="th_note">Megjegyzés</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="service-col" data-i18n="r1_service">Pianínó szállítás – Budapest belváros</td>
+          <td class="price-col">25 000 Ft-tól</td>
+          <td class="note-col" data-i18n="r1_note">1 db, max. 3 emeleti szint lépcsőn</td>
+        </tr>
+        <tr>
+          <td class="service-col" data-i18n="r2_service">Pianínó szállítás – agglomeráció / vidék</td>
+          <td class="price-col">35 000 Ft-tól</td>
+          <td class="note-col" data-i18n="r2_note">50 km-en belül, egyedi ajánlat felett</td>
+        </tr>
+        <tr>
+          <td class="service-col" data-i18n="r3_service">Grand zongora szállítás (kis)</td>
+          <td class="price-col">55 000 Ft-tól</td>
+          <td class="note-col" data-i18n="r3_note">pl. Yamaha C1–C2, Budapest</td>
+        </tr>
+        <tr>
+          <td class="service-col" data-i18n="r4_service">Grand zongora szállítás (nagy)</td>
+          <td class="price-col">90 000 Ft-tól</td>
+          <td class="note-col" data-i18n="r4_note">pl. Yamaha C5–C7, daru igény esetén +díj</td>
+        </tr>
+        <tr>
+          <td class="service-col" data-i18n="r5_service">Zeneiskola / intézményi csomag</td>
+          <td class="price-col" data-i18n="r5_price">Egyedi ajánlat</td>
+          <td class="note-col" data-i18n="r5_note">2+ hangszer, visszatérő megrendelés esetén kedvezmény</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="price-disclaimer" data-i18n="prices_disclaimer">
+      * Az árak tájékoztató jellegűek, az aktuális üzemanyag-árak, emeleti szint, 
+      lépcsőrendszer és szállítási távolság függvényében változhatnak. 
+      Pontos ajánlatért kérjük vegye fel velünk a kapcsolatot.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="kapcsolat">
+  <div class="section-inner contact-inner">
+    <p class="section-tag" style="text-align:center" data-i18n="contact_tag">Kapcsolat</p>
+    <h2 class="section-title" style="text-align:center" data-i18n-html="contact_title">Lépjen velünk <em>kapcsolatba</em></h2>
+    <div class="section-line" style="margin:0 auto 60px"></div>
+
+    <div class="contact-stack">
+      <a href="tel:+36301234567" class="contact-line">
+        <span class="contact-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.7 4h2.6l1.3 3.6-1.5 1.6a9.9 9.9 0 0 0 5.7 5.7l1.6-1.5 3.6 1.3V17c0 1.7-1.4 3-3 3A13 13 0 0 1 4 7c0-1.7 1.4-3 2.7-3z" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <div class="contact-text">
+          <div class="contact-value-big">+36 30 123 4567</div>
+        </div>
+      </a>
+
+      <a href="mailto:info@oregesincze.hu" class="contact-line">
+        <span class="contact-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3.2" y="5.8" width="17.6" height="12.4" rx="1.5" stroke="white" stroke-width="1.6"/>
+            <path d="M3.8 7.4L12 13.1l8.2-5.7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <div class="contact-text">
+          <div class="contact-value-big">info@oregesincze.hu</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ÖREG <span>&amp; INCZE</span></div>
+  <div class="footer-copy" data-i18n="footer_copy">© 2026 Öreg &amp; Incze Zongora Szállítás – Minden jog fenntartva</div>
+</footer>
+
+<script>
+  // Generate piano keys strip
+  const strip = document.querySelector('.keys-strip');
+  const pattern = [1,0,1,0,1,1,0,1,0,1,0,1]; // 1=white, 0=black (visual approximation)
+  const whites = [0,2,4,5,7,9,11]; // white key semitone positions
+  const blacks = [1,3,6,8,10];     // black key positions (relative to C)
+  
+  // Build repeating white keys with black key overlays
+  const numWhites = Math.ceil(strip.offsetWidth / 28) + 10;
+  let html = '';
+  const blackPattern = [false, true, true, false, true, true, true]; // C D E F G A B
+  
+  for (let i = 0; i < numWhites; i++) {
+    const hasBlack = [0,1,3,4,5].includes(i % 7);
+    html += `<div class="key-w">${hasBlack ? '<div class="key-b"></div>' : ''}</div>`;
+  }
+  strip.innerHTML = html;
+
+  // Smooth nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const nav = document.querySelector('nav');
+  const menuToggle = document.querySelector('.menu-toggle');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? '#f5f5f0' : '';
+    });
+  });
+
+  if (menuToggle && nav) {
+    menuToggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('menu-open');
+      menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('menu-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  const i18n = {
+    hu: {
+      nav_about: 'Rólunk',
+      nav_prices: 'Árlista',
+      nav_contact: 'Kapcsolat',
+      hero_tag: 'Professzionális zongora szállítás',
+      hero_subtitle: 'Zongora Szállítás – Pontosan, Biztonságosan',
+      hero_desc: 'Yamaha zongorák és pianínók szakszerű szállítása magánszemélyeknek, zeneiskoláknak és hangversenyrendezőknek. Tapasztalat, amelyre számíthat.',
+      hero_button: 'Árlista',
+      about_tag: 'Rólunk',
+      about_title: 'Megszólal <em>minden</em> hangszer',
+      about_p1: 'Az Öreg & Incze zongora szállítás több mint egy fuvarozó cég - mi zongorásokat szeretünk és hangszereket értünk. Minden szállítmány mögött ott a tapasztalat, hogy egy Yamaha grand vagy pianínó nem csupán bútordarab, hanem finom mechanika, érzékeny fa és évtizednyi hangolás összessége.',
+      about_p2: 'Alapítóink saját zenei hátterükből merítve hozták létre ezt a szolgáltatást, mert látták: a piacon hiányzik a valóban hangszer-tudatos szállítás. Azóta minden fuvar egy ígéret: a hangszer ugyanolyan állapotban érkezik meg, mint ahogy elindult.',
+      feat_1_t: 'Yamaha specialisták',
+      feat_1_d: 'Elsősorban Yamaha grand és upright zongorákra specializálódtunk - ismerjük a méretek, tömegek és mechanika minden részletét.',
+      feat_2_t: 'Biztosított szállítás',
+      feat_2_d: 'Minden fuvar biztosítással rendelkezik. A hangszer értékének megfelelő fedezet, kiegészítő biztosítás igény esetén.',
+      feat_3_t: 'Szállítás utáni hangolás',
+      feat_3_d: 'Szállítás után ajánljuk partnerhangoló szakembereinket - a hangszer életre kel az új helyen is.',
+      feat_4_t: 'Országos lefedettség',
+      feat_4_d: 'Budapest és vidék között, városon belül, vagy akár határon átnyúló szállítás egyedi megállapodással.',
+      prices_tag: 'Árlista',
+      prices_title: 'Tájékoztató <em>áraink</em>',
+      th_service: 'Szolgáltatás',
+      th_price: 'Ár (bruttó)',
+      th_note: 'Megjegyzés',
+      r1_service: 'Pianínó szállítás - Budapest belváros',
+      r1_note: '1 db, max. 3 emeleti szint lépcsőn',
+      r2_service: 'Pianínó szállítás - agglomeráció / vidék',
+      r2_note: '50 km-en belül, egyedi ajánlat felett',
+      r3_service: 'Grand zongora szállítás (kis)',
+      r3_note: 'pl. Yamaha C1-C2, Budapest',
+      r4_service: 'Grand zongora szállítás (nagy)',
+      r4_note: 'pl. Yamaha C5-C7, daru igény esetén +díj',
+      r5_service: 'Zeneiskola / intézményi csomag',
+      r5_price: 'Egyedi ajánlat',
+      r5_note: '2+ hangszer, visszatérő megrendelés esetén kedvezmény',
+      prices_disclaimer: '* Az árak tájékoztató jellegűek, az aktuális üzemanyag-árak, emeleti szint, lépcsőrendszer és szállítási távolság függvényében változhatnak. Pontos ajánlatért kérjük vegye fel velünk a kapcsolatot.',
+      contact_tag: 'Kapcsolat',
+      contact_title: 'Lépjen velünk <em>kapcsolatba</em>',
+      footer_copy: '© 2026 Öreg & Incze Zongora Szállítás - Minden jog fenntartva'
+    },
+    en: {
+      nav_about: 'About',
+      nav_prices: 'Price List',
+      nav_contact: 'Contact',
+      hero_tag: 'Professional Piano Transport',
+      hero_subtitle: 'Piano Transport - Precise and Safe',
+      hero_desc: 'Professional transport of Yamaha grand and upright pianos for private clients, music schools, and concert organizers. Experience you can rely on.',
+      hero_button: 'Price List',
+      about_tag: 'About',
+      about_title: 'Every <em>instrument</em> arrives safely',
+      about_p1: 'Oreg & Incze Piano Transport is more than a logistics service - we are piano-focused professionals. Every move is handled with the care a Yamaha grand or upright requires: sensitive wood, precision mechanics, and years of tonal character.',
+      about_p2: 'Our founders built this service from a musical background, after seeing a gap in truly instrument-aware transport. Every delivery follows one promise: your piano arrives in the same condition it left.',
+      feat_1_t: 'Yamaha Specialists',
+      feat_1_d: 'We focus primarily on Yamaha grand and upright pianos, with full awareness of dimensions, weight, and mechanical sensitivity.',
+      feat_2_t: 'Insured Transport',
+      feat_2_d: 'Every shipment is insured. Optional extended coverage is available based on your instrument value.',
+      feat_3_t: 'Post-Move Tuning',
+      feat_3_d: 'After delivery we can connect you with trusted tuning partners so your instrument performs at its best.',
+      feat_4_t: 'Nationwide Coverage',
+      feat_4_d: 'City, intercity, and special route transport with tailored handling options.',
+      prices_tag: 'Price List',
+      prices_title: 'Indicative <em>prices</em>',
+      th_service: 'Service',
+      th_price: 'Price (gross)',
+      th_note: 'Notes',
+      r1_service: 'Upright transport - Budapest downtown',
+      r1_note: '1 instrument, up to 3 stair levels',
+      r2_service: 'Upright transport - suburban / regional',
+      r2_note: 'Within 50 km, custom quote above',
+      r3_service: 'Grand piano transport (small)',
+      r3_note: 'e.g. Yamaha C1-C2, Budapest',
+      r4_service: 'Grand piano transport (large)',
+      r4_note: 'e.g. Yamaha C5-C7, crane use has extra fee',
+      r5_service: 'Music school / institutional package',
+      r5_price: 'Custom quote',
+      r5_note: 'Discount for 2+ instruments or recurring orders',
+      prices_disclaimer: '* Prices are indicative and may vary based on fuel rates, floor level, staircase layout, and delivery distance. Contact us for an exact quote.',
+      contact_tag: 'Contact',
+      contact_title: 'Get in <em>touch</em>',
+      footer_copy: '© 2026 Oreg & Incze Piano Transport - All rights reserved'
+    }
+  };
+
+  const langButtons = document.querySelectorAll('.lang-btn');
+
+  function setLanguage(lang) {
+    const pack = i18n[lang] || i18n.hu;
+
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (pack[key]) {
+        el.textContent = pack[key];
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-html');
+      if (pack[key]) {
+        el.innerHTML = pack[key];
+      }
+    });
+
+    langButtons.forEach((btn) => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    localStorage.setItem('oi_lang', lang);
+  }
+
+  langButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      setLanguage(btn.getAttribute('data-lang'));
+    });
+  });
+
+  setLanguage(localStorage.getItem('oi_lang') || 'hu');
+</script>
+</body>
+</html>
