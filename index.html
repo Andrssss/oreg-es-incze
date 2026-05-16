@@ -99,8 +99,8 @@
     .nav-links a:hover { color: var(--white); }
     .menu-toggle {
       display: none;
-      width: 44px;
-      height: 44px;
+      width: 34px;
+      height: 34px;
       border: 1px solid #3a3a3a;
       background: #0f0f0f;
       color: var(--pure-white);
@@ -110,7 +110,7 @@
     }
     .menu-toggle span {
       display: block;
-      width: 18px;
+      width: 14px;
       height: 2px;
       background: var(--pure-white);
       position: relative;
@@ -120,12 +120,12 @@
       content: '';
       position: absolute;
       left: 0;
-      width: 18px;
+      width: 14px;
       height: 2px;
       background: var(--pure-white);
     }
-    .menu-toggle span::before { top: -6px; }
-    .menu-toggle span::after { top: 6px; }
+    .menu-toggle span::before { top: -5px; }
+    .menu-toggle span::after { top: 5px; }
     .nav-right {
       display: flex;
       align-items: center;
@@ -484,6 +484,12 @@
       color: var(--silver);
       font-size: 0.83rem;
     }
+    .price-surcharge {
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+    }
     .price-disclaimer {
       margin-top: 30px;
       font-size: 0.82rem;
@@ -648,9 +654,18 @@
         font-weight: 700;
         letter-spacing: 2.8px;
       }
+      .nav-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
       .lang-btn {
-        font-size: 0.76rem;
-        padding: 10px 13px;
+        font-size: 0.58rem;
+        padding: 5px 7px;
+        letter-spacing: 1px;
+      }
+      .lang-switch {
+        border-width: 1px;
       }
       .services-grid { grid-template-columns: 1fr; }
       .price-table thead th:last-child,
@@ -792,32 +807,23 @@
       </thead>
       <tbody>
         <tr>
-          <td class="service-col" data-i18n="r1_service">Pianínó szállítás – Budapest belváros</td>
-          <td class="price-col">25 000 Ft-tól</td>
-          <td class="note-col" data-i18n="r1_note">1 db, max. 3 emeleti szint lépcsőn</td>
+          <td class="service-col" data-i18n="r1_service">Pianínó szállítás</td>
+          <td class="price-col">35 000 Ft</td>
+          <td class="note-col" data-i18n="r1_note">+4 000 Ft/emelet</td>
         </tr>
         <tr>
-          <td class="service-col" data-i18n="r2_service">Pianínó szállítás – agglomeráció / vidék</td>
-          <td class="price-col">35 000 Ft-tól</td>
-          <td class="note-col" data-i18n="r2_note">50 km-en belül, egyedi ajánlat felett</td>
+          <td class="service-col" data-i18n="r2_service">Grand zongora szállítás</td>
+          <td class="price-col">55 000 Ft</td>
+          <td class="note-col" data-i18n="r2_note">+9 000 Ft/emelet</td>
         </tr>
         <tr>
-          <td class="service-col" data-i18n="r3_service">Grand zongora szállítás (kis)</td>
-          <td class="price-col">55 000 Ft-tól</td>
-          <td class="note-col" data-i18n="r3_note">pl. Yamaha C1–C2, Budapest</td>
-        </tr>
-        <tr>
-          <td class="service-col" data-i18n="r4_service">Grand zongora szállítás (nagy)</td>
-          <td class="price-col">90 000 Ft-tól</td>
-          <td class="note-col" data-i18n="r4_note">pl. Yamaha C5–C7, daru igény esetén +díj</td>
-        </tr>
-        <tr>
-          <td class="service-col" data-i18n="r5_service">Zeneiskola / intézményi csomag</td>
-          <td class="price-col" data-i18n="r5_price">Egyedi ajánlat</td>
-          <td class="note-col" data-i18n="r5_note">2+ hangszer, visszatérő megrendelés esetén kedvezmény</td>
+          <td class="service-col" data-i18n="r3_service">Csembaló és egyéb nagyobb hangszer</td>
+          <td class="price-col" data-i18n="r3_price">Megbeszélés alapján</td>
+          <td class="note-col" data-i18n="r3_note">Egyedi ajánlat</td>
         </tr>
       </tbody>
     </table>
+    <p class="price-surcharge" data-i18n="prices_surcharge">Minden szolgáltatásra: Pest megye (nem belváros) +6 000 Ft · Pest megyén kívül +250 Ft/km</p>
     <p class="price-disclaimer" data-i18n="prices_disclaimer">
       * Az árak tájékoztató jellegűek, az aktuális üzemanyag-árak, emeleti szint, 
       lépcsőrendszer és szállítási távolság függvényében változhatnak. 
@@ -834,18 +840,18 @@
     <div class="section-line" style="margin:0 auto 60px"></div>
 
     <div class="contact-stack">
-      <a href="tel:+36301234567" class="contact-line">
+      <a href="tel:+36209629001" class="contact-line">
         <span class="contact-logo" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6.7 4h2.6l1.3 3.6-1.5 1.6a9.9 9.9 0 0 0 5.7 5.7l1.6-1.5 3.6 1.3V17c0 1.7-1.4 3-3 3A13 13 0 0 1 4 7c0-1.7 1.4-3 2.7-3z" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
         <div class="contact-text">
-          <div class="contact-value-big">+36 30 123 4567</div>
+          <div class="contact-value-big">+36 20 962 9001</div>
         </div>
       </a>
 
-      <a href="mailto:info@oregesincze.hu" class="contact-line">
+      <div class="contact-line">
         <span class="contact-logo" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="3.2" y="5.8" width="17.6" height="12.4" rx="1.5" stroke="white" stroke-width="1.6"/>
@@ -853,9 +859,9 @@
           </svg>
         </span>
         <div class="contact-text">
-          <div class="contact-value-big">info@oregesincze.hu</div>
+          <div class="contact-value-big">asew99@gmail.com</div>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
@@ -874,7 +880,7 @@
   const blacks = [1,3,6,8,10];     // black key positions (relative to C)
   
   // Build repeating white keys with black key overlays
-  const numWhites = Math.ceil(strip.offsetWidth / 28) + 10;
+  const numWhites = 250;
   let html = '';
   const blackPattern = [false, true, true, false, true, true, true]; // C D E F G A B
   
@@ -940,17 +946,14 @@
       th_service: 'Szolgáltatás',
       th_price: 'Ár (bruttó)',
       th_note: 'Megjegyzés',
-      r1_service: 'Pianínó szállítás - Budapest belváros',
-      r1_note: '1 db, max. 3 emeleti szint lépcsőn',
-      r2_service: 'Pianínó szállítás - agglomeráció / vidék',
-      r2_note: '50 km-en belül, egyedi ajánlat felett',
-      r3_service: 'Grand zongora szállítás (kis)',
-      r3_note: 'pl. Yamaha C1-C2, Budapest',
-      r4_service: 'Grand zongora szállítás (nagy)',
-      r4_note: 'pl. Yamaha C5-C7, daru igény esetén +díj',
-      r5_service: 'Zeneiskola / intézményi csomag',
-      r5_price: 'Egyedi ajánlat',
-      r5_note: '2+ hangszer, visszatérő megrendelés esetén kedvezmény',
+      r1_service: 'Pianínó szállítás',
+      r1_note: '+4 000 Ft/emelet',
+      r2_service: 'Grand zongora szállítás',
+      r2_note: '+9 000 Ft/emelet',
+      prices_surcharge: 'Minden szolgáltatásra: Pest megye (nem belváros) +6 000 Ft · Pest megyén kívül +250 Ft/km',
+      r3_service: 'Csembaló és egyéb nagyobb hangszer',
+      r3_price: 'Megbeszélés alapján',
+      r3_note: 'Egyedi ajánlat',
       prices_disclaimer: '* Az árak tájékoztató jellegűek, az aktuális üzemanyag-árak, emeleti szint, lépcsőrendszer és szállítási távolság függvényében változhatnak. Pontos ajánlatért kérjük vegye fel velünk a kapcsolatot.',
       contact_tag: 'Kapcsolat',
       contact_title: 'Lépjen velünk <em>kapcsolatba</em>',
@@ -981,17 +984,14 @@
       th_service: 'Service',
       th_price: 'Price (gross)',
       th_note: 'Notes',
-      r1_service: 'Upright transport - Budapest downtown',
-      r1_note: '1 instrument, up to 3 stair levels',
-      r2_service: 'Upright transport - suburban / regional',
-      r2_note: 'Within 50 km, custom quote above',
-      r3_service: 'Grand piano transport (small)',
-      r3_note: 'e.g. Yamaha C1-C2, Budapest',
-      r4_service: 'Grand piano transport (large)',
-      r4_note: 'e.g. Yamaha C5-C7, crane use has extra fee',
-      r5_service: 'Music school / institutional package',
-      r5_price: 'Custom quote',
-      r5_note: 'Discount for 2+ instruments or recurring orders',
+      r1_service: 'Upright piano transport',
+      r1_note: '+4,000 HUF/floor',
+      r2_service: 'Grand piano transport',
+      r2_note: '+9,000 HUF/floor',
+      prices_surcharge: 'Applies to all services: Pest county (non-downtown) +6,000 HUF · Outside Pest county +250 HUF/km',
+      r3_service: 'Harpsichord and other larger instruments',
+      r3_price: 'By arrangement',
+      r3_note: 'Custom quote',
       prices_disclaimer: '* Prices are indicative and may vary based on fuel rates, floor level, staircase layout, and delivery distance. Contact us for an exact quote.',
       contact_tag: 'Contact',
       contact_title: 'Get in <em>touch</em>',
