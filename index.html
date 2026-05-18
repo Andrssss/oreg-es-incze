@@ -760,8 +760,55 @@
         border-width: 1px;
       }
       .services-grid { grid-template-columns: 1fr; }
-      .price-table thead th:last-child,
-      .price-table tbody td:last-child { display: none; }
+      .price-table {
+        table-layout: fixed;
+        font-size: 1.02rem;
+      }
+      .price-table thead th,
+      .price-table tbody td {
+        padding: 8px 6px;
+      }
+      .price-table thead th {
+        font-size: 0.9rem;
+        letter-spacing: 0.3px;
+        line-height: 1.2;
+      }
+      .price-table .service-col,
+      .price-table .price-col,
+      .price-table .note-col {
+        font-size: 1.02rem;
+        line-height: 1.3;
+      }
+      .price-surcharge {
+        font-size: 1rem;
+        line-height: 1.3;
+      }
+      .price-disclaimer {
+        font-size: 0.92rem;
+        line-height: 1.35;
+      }
+      .footer-copy {
+        font-size: 0.75rem;
+        line-height: 1.3;
+      }
+      #rolunk .section-tag {
+        font-size: 1rem;
+      }
+      #rolunk .section-title {
+        font-size: 1.35rem;
+        line-height: 1.2;
+      }
+      #rolunk .about-text p {
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+      #rolunk .feature-title {
+        font-size: 0.98rem;
+      }
+      #rolunk .feature-desc {
+        font-size: 0.9rem;
+        line-height: 1.35;
+      }
       footer { flex-direction: column; gap: 10px; text-align: center; }
     }
   </style>
