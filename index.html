@@ -96,33 +96,6 @@
       overflow-x: hidden;
     }
 
-    /* ── PIANO KEYS DECORATIVE BORDER ── */
-    .piano-keys {
-      display: flex;
-      height: 60px;
-      width: 100%;
-      overflow: hidden;
-    }
-    .piano-keys .white-key {
-      flex: 1;
-      background: var(--pure-white);
-      border: 1px solid #333;
-      border-top: none;
-      border-radius: 0 0 4px 4px;
-      position: relative;
-    }
-    .piano-keys .black-key {
-      position: absolute;
-      width: 60%;
-      height: 60%;
-      background: var(--off-black);
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      border-radius: 0 0 3px 3px;
-      z-index: 2;
-    }
-
     /* ── NAVIGATION ── */
     nav {
       position: fixed;
@@ -309,37 +282,6 @@
     .btn-primary:hover {
       background: var(--white);
       color: var(--black);
-    }
-
-    /* ── PIANO KEYS STRIP ── */
-    .keys-strip {
-      display: flex;
-      height: 52px;
-      width: 100%;
-      background: linear-gradient(to bottom, #151515 0%, #0c0c0c 100%);
-      overflow: hidden;
-      position: relative;
-    }
-    .key-w {
-      flex: 0 0 26px;
-      background: linear-gradient(to bottom, #fcfcfc 0%, #ececec 75%, #dddddd 100%);
-      border-left: 1px solid #b5b5b5;
-      border-right: 1px solid #a9a9a9;
-      border-bottom: 2px solid #8f8f8f;
-      border-radius: 0 0 2px 2px;
-      position: relative;
-    }
-    .key-b {
-      position: absolute;
-      top: 0;
-      right: -31%;
-      width: 62%;
-      height: 62%;
-      background: linear-gradient(to bottom, #242424 0%, #0a0a0a 100%);
-      border: 1px solid #050505;
-      z-index: 2;
-      border-radius: 0 0 3px 3px;
-      box-shadow: inset -1px -2px 0 rgba(255, 255, 255, 0.08);
     }
 
     /* ── SECTION STYLES ── */
@@ -563,6 +505,24 @@
       color: var(--accent);
       letter-spacing: 0;
     }
+    .price-notes {
+      margin-top: 20px;
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .price-notes li {
+      font-size: 1.3rem;
+      color: var(--accent);
+      line-height: 1.4;
+    }
+    .price-notes li::before {
+      content: '•';
+      margin-right: 8px;
+      font-size: 1.2em;
+    }
     .price-disclaimer {
       margin-top: 30px;
       font-size: 1.3rem;
@@ -611,6 +571,55 @@
       margin-top: 14px;
     }
 
+    /* ── PARTNER STRIP ── */
+    .partner-strip {
+      background: var(--off-black);
+      padding: 64px 28px;
+      border-top: 1px solid #1c1c1c;
+      border-bottom: 1px solid #1c1c1c;
+      text-align: center;
+    }
+    .partner-strip .section-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .partner-strip .section-tag {
+      margin-bottom: 0;
+      font-size: 1.8rem;
+    }
+    .partner-logo-box {
+      display: inline-block;
+      margin: 0px 0;
+    }
+    .partner-logo-img {
+      display: block;
+      max-width: min(320px, 80vw);
+      height: auto;
+    }
+    .partner-headline {
+      font-family: 'Noto Serif', 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-style: italic;
+      color: var(--white);
+    }
+    .partner-desc {
+      font-size: 1.3rem;
+      color: var(--silver);
+      max-width: 660px;
+      line-height: 1.6;
+      text-align: center;
+    }
+    .partner-link {
+      font-size: 1.1rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: opacity 0.3s;
+    }
+    .partner-link:hover { opacity: 0.7; }
+
     /* ── CONTACT ── */
     #kapcsolat {
       background: var(--off-black);
@@ -625,8 +634,6 @@
       max-width: 900px;
       margin: 0 auto;
       padding: 28px 16px;
-      border-top: 1px solid #232323;
-      border-bottom: 1px solid #232323;
     }
     .contact-line {
       display: flex;
@@ -872,10 +879,8 @@
   <a href="#arak" class="btn-primary" data-i18n="hero_button">Árlista</a>
 </section>
 
-<!-- PIANO KEYS STRIP -->
-<div class="keys-strip" aria-hidden="true">
-  <!-- Generated with JS below -->
-</div>
+<!-- HERO-ABOUT DIVIDER -->
+<div style="height:80px;background:linear-gradient(to bottom,#0a0a0a,#111111);"></div>
 
 <!-- ABOUT -->
 <section id="rolunk">
@@ -919,17 +924,6 @@
           <div>
             <div class="feature-title" data-i18n="feat_2_t">Biztosított szállítás</div>
             <div class="feature-desc" data-i18n="feat_2_d">Minden fuvar biztosítással rendelkezik. A hangszer értékének megfelelő fedezet, kiegészítő biztosítás igény esetén.</div>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14.5 5.5a4 4 0 0 0-5 5l-5.4 5.4a1.5 1.5 0 0 0 2.1 2.1l5.4-5.4a4 4 0 0 0 5-5l-2.4 2.4-2.1-2.1 2.4-2.4z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div>
-            <div class="feature-title" data-i18n="feat_3_t">Kíméletes rögzítés és védelem</div>
-            <div class="feature-desc" data-i18n="feat_3_d">Szállítás közben professzionális rögzítést és védelmet alkalmazunk, hogy a hangszer biztonságban érkezzen meg.</div>
           </div>
         </div>
         <div class="feature-item">
@@ -984,19 +978,33 @@
         </tr>
       </tbody>
     </table>
-    <p class="price-surcharge" data-i18n="prices_surcharge">Minden szolgáltatásra: Pest megye (nem belváros) +6 000 Ft · Pest megyén kívül +250 Ft/km</p>
+    <ul class="price-notes">
+      <li data-i18n="prices_surcharge">Budapesten kívűl, de Pest megyén belűl +6 000 Ft </li>
+      <li data-i18n="prices_surcharge2">Pest megyén kívül +250 Ft/km</li>
+      <li data-i18n="prices_no_surcharge">Nincs hétvégi és ünnepnapi felár. </li>
+    </ul>
     <p class="price-disclaimer" data-i18n="prices_disclaimer">
-      * Az árak tájékoztató jellegűek, az aktuális üzemanyag-árak, emeleti szint, 
-      lépcsőrendszer és szállítási távolság függvényében változhatnak. 
+      * Az árak tájékoztató jellegűek, az aktuális emeleti szint,
+      lépcsőrendszer és szállítási távolság függvényében változhatnak.
       Pontos ajánlatért kérjük vegye fel velünk a kapcsolatot.
     </p>
   </div>
 </section>
 
+<!-- PARTNERSHIP: SZONÁTA ZONGORATEREM -->
+<div class="partner-strip">
+  <div class="section-inner">
+    <p class="section-tag" data-i18n="partner_tag">Együttműködő partner</p>
+    <div class="partner-logo-box">
+      <img class="partner-logo-img" src="sonata.png" alt="Szonáta Zongoraterem" />
+    </div>
+    <a href="https://szonatapiano.hu/" target="_blank" rel="noopener noreferrer" class="partner-link" data-i18n="partner_link">szonatapiano.hu ↗</a>
+  </div>
+</div>
+
 <!-- CONTACT -->
 <section id="kapcsolat">
   <div class="section-inner contact-inner">
-    <p class="section-tag" style="text-align:center" data-i18n="contact_tag">Kapcsolat</p>
     <h2 class="section-title" style="text-align:center" data-i18n-html="contact_title">Lépjen velünk <em>kapcsolatba</em></h2>
     <div class="section-line" style="margin:0 auto 60px"></div>
 
@@ -1034,19 +1042,6 @@
 </footer>
 
 <script defer>
-  // Generate realistic repeating piano key strip (7 white / 5 black per octave)
-  const strip = document.querySelector('.keys-strip');
-  // Black keys after: C, D, F, G, A (none after E and B)
-  const numWhites = 140;
-  let html = '';
-  const hasBlackAfterWhite = [true, true, false, true, true, true, false]; // C D E F G A B
-  
-  for (let i = 0; i < numWhites; i++) {
-    const hasBlack = hasBlackAfterWhite[i % 7];
-    html += `<div class="key-w">${hasBlack ? '<div class="key-b"></div>' : ''}</div>`;
-  }
-  strip.innerHTML = html;
-
   // Smooth nav highlight
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
@@ -1111,7 +1106,12 @@
       r3_service: 'Csembaló és egyéb nagyobb hangszer',
       r3_price: 'Megbeszélés alapján',
       r3_note: 'Egyedi ajánlat',
+      prices_no_surcharge: 'Nincs hétvégi felár, és ünnepnapokon sem számítunk fel pótdíjat.',
       prices_disclaimer: '* Az árak tájékoztató jellegűek, az aktuális üzemanyag-árak, emeleti szint, lépcsőrendszer és szállítási távolság függvényében változhatnak. Pontos ajánlatért kérjük vegye fel velünk a kapcsolatot.',
+      partner_tag: 'Együttműködő partner',
+      partner_headline: 'Kiemelkedő szállítási partnerünk',
+      partner_desc: 'A Szonáta Zongoraterem Budapest egyik legismertebb zongora bemutatóterme és szervizközpontja. Rendszeres partnereként számos hangszert szállítottunk már számukra – a precizitással és gondossággal, amelyet az általuk képviselt minőség megkövetel.',
+      partner_link: 'szonatapiano.hu ↗',
       contact_tag: 'Kapcsolat',
       contact_title: 'Lépjen velünk <em>kapcsolatba</em>',
       footer_copy: '© 2026 Öreg & Incze Zongora Szállítás - Minden jog fenntartva'
@@ -1149,7 +1149,12 @@
       r3_service: 'Harpsichord and other larger instruments',
       r3_price: 'By arrangement',
       r3_note: 'Custom quote',
+      prices_no_surcharge: 'No weekend surcharge, and no additional fee on public holidays.',
       prices_disclaimer: '* Prices are indicative and may vary based on fuel rates, floor level, staircase layout, and delivery distance. Contact us for an exact quote.',
+      partner_tag: 'Partner',
+      partner_headline: 'Our Key Delivery Partner',
+      partner_desc: 'Szonáta Zongoraterem is one of Budapest's most reputable piano showrooms and service centres. As their regular transport partner, we have delivered numerous instruments for them – with the precision and care their quality demands.',
+      partner_link: 'szonatapiano.hu ↗',
       contact_tag: 'Contact',
       contact_title: 'Get in <em>touch</em>',
       footer_copy: '© 2026 Oreg & Incze Piano Transport - All rights reserved'
