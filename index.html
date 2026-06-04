@@ -81,6 +81,12 @@
       --white: #f5f5f0;
       --pure-white: #ffffff;
       --accent: #c8a96e;
+      --hu-red: #cd2a3e;
+      --hu-white: #f5f5f0;
+      --hu-green: #007849;
+      --en-blue: #012169;
+      --en-white: #f5f5f0;
+      --en-red: #cf142b;
     }
 
     html { scroll-behavior: smooth; }
@@ -186,12 +192,30 @@
       text-transform: uppercase;
       padding: 8px 12px;
       cursor: pointer;
-      transition: background 0.25s, color 0.25s;
+      transition: background 0.25s;
     }
     .lang-btn:hover { color: var(--white); }
     .lang-btn.active {
-      background: var(--pure-white);
       color: var(--black);
+      text-shadow: 0 0 2px rgba(255,255,255,0.45);
+      font-weight: 700;
+      transition: none;
+    }
+    .lang-btn.active[data-lang="hu"] {
+      background: linear-gradient(180deg,
+        var(--hu-red) 0%,
+        var(--hu-red) 33.333%,
+        var(--hu-white) 33.333%,
+        var(--hu-white) 66.666%,
+        var(--hu-green) 66.666%,
+        var(--hu-green) 100%
+      );
+    }
+    .lang-btn.active[data-lang="en"] {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3Crect width='60' height='30' fill='%23012169'/%3E%3Cpath d='M 0 0 L 30 15 L 60 0 M 0 30 L 30 15 L 60 30' stroke='%23fff' stroke-width='3' fill='none'/%3E%3Cpath d='M 0 0 L 30 15 L 60 0 M 0 30 L 30 15 L 60 30' stroke='%23cf142b' stroke-width='1.5' fill='none' stroke-dasharray='0'/%3E%3Crect x='27' y='0' width='6' height='30' fill='%23fff'/%3E%3Crect x='0' y='13' width='60' height='4' fill='%23fff'/%3E%3Crect x='28' y='0' width='4' height='30' fill='%23cf142b'/%3E%3Crect x='0' y='14' width='60' height='2' fill='%23cf142b'/%3E%3C/svg%3E") center/cover no-repeat;
+      color: #f5f5f0;
+      text-shadow: 0 0 3px rgba(0,0,0,0.8);
+      font-weight: 700;
     }
 
     /* ── HERO ── */
@@ -286,6 +310,8 @@
 
     /* ── SECTION STYLES ── */
     section { padding: 64px 28px; }
+    section[id] { scroll-margin-top: 95px; }
+    #galeria { scroll-margin-top: 120px; }
     .section-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -365,6 +391,152 @@
       font-size: 1.3rem;
       color: var(--silver);
       line-height: 1.45;
+    }
+
+    .gallery-block {
+      margin-top: 36px;
+      display: grid;
+      gap: 18px;
+      grid-column: 1 / -1;
+    }
+    .gallery-title {
+      font-family: 'Noto Serif', 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+      color: var(--pure-white);
+      margin-bottom: 14px;
+    }
+    .gallery-desc {
+      color: var(--silver);
+      font-size: 1.2rem;
+      line-height: 1.65;
+      margin-bottom: 20px;
+      max-width: 760px;
+    }
+    .gallery-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .gallery-nav {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .gallery-nav-btn {
+      width: 44px;
+      height: 44px;
+      border: 1px solid #2a2a2a;
+      background: transparent;
+      color: var(--pure-white);
+      font-size: 1.6rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: border-color 0.25s, color 0.25s, transform 0.25s;
+    }
+    .gallery-nav-btn:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .gallery-nav-btn:disabled {
+      border-color: #222;
+      color: #555;
+      cursor: not-allowed;
+    }
+    .gallery-thumbs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .gallery-thumb {
+      aspect-ratio: 4 / 3;
+      border: 1px solid #2a2a2a;
+      background: transparent;
+      padding: 0;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .gallery-thumb:hover,
+    .gallery-thumb.active {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .gallery-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 200;
+      touch-action: none;
+    }
+    .gallery-lightbox.open {
+      display: flex;
+    }
+    .gallery-lightbox img {
+      max-width: 100%;
+      max-height: 100%;
+      border: 1px solid #333;
+      box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    }
+    .gallery-lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(15,15,15,0.85);
+      color: var(--white);
+      font-size: 2rem;
+      line-height: 1;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      z-index: 201;
+      transition: border-color 0.25s, background 0.25s, transform 0.25s;
+    }
+    .gallery-lightbox-prev {
+      left: 18px;
+    }
+    .gallery-lightbox-next {
+      right: 18px;
+    }
+    .gallery-lightbox-nav:hover {
+      border-color: var(--accent);
+      background: rgba(15,15,15,0.95);
+      transform: translateY(-50%) scale(1.05);
+    }
+    .gallery-lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(15,15,15,0.95);
+      color: var(--white);
+      font-size: 1.5rem;
+      line-height: 1;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      z-index: 201;
+    }
+    .gallery-lightbox-close:hover {
+      border-color: var(--accent);
     }
 
     /* ── SERVICES ── */
@@ -844,6 +1016,9 @@
         font-size: 0.9rem;
         line-height: 1.35;
       }
+      .gallery-thumbs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
       footer { flex-direction: column; gap: 10px; text-align: center; }
     }
   </style>
@@ -859,6 +1034,7 @@
   <a class="nav-logo" href="#hero">ÖREG <span>&</span> INCZE</a>
   <ul class="nav-links">
     <li><a href="#rolunk" data-i18n="nav_about">Rólunk</a></li>
+    <li><a href="#galeria" data-i18n="nav_gallery">Galéria</a></li>
     <li><a href="#arak" data-i18n="nav_prices">Árlista</a></li>
     <li><a href="#kapcsolat" data-i18n="nav_contact">Kapcsolat</a></li>
   </ul>
@@ -961,6 +1137,47 @@
           </div>
         </div>
       </div>
+      <div class="gallery-block">
+        <div class="gallery-header">
+          <h3 class="gallery-title" id="galeria" data-i18n="gallery_title">Galéria</h3>
+          <div class="gallery-nav">
+            <button type="button" class="gallery-nav-btn gallery-nav-prev" aria-label="Előző képek">‹</button>
+            <button type="button" class="gallery-nav-btn gallery-nav-next" aria-label="Következő képek">›</button>
+          </div>
+        </div>
+        <div class="gallery-thumbs">
+          <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_103217413.jpg" aria-label="Kép 1">
+            <img src="pictures/PXL_20260523_103217413.jpg" alt="Zongora szállítása 1" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_103226315.jpg" aria-label="Kép 2">
+            <img src="pictures/PXL_20260523_103226315.jpg" alt="Zongora szállítása 2" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_113950965.jpg" aria-label="Kép 3">
+            <img src="pictures/PXL_20260523_113950965.jpg" alt="Zongora szállítása 3" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_113541492.MP.jpg" aria-label="Kép 4">
+            <img src="pictures/PXL_20260523_113541492.MP.jpg" alt="Zongora szállítása 4" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_114004051.jpg" aria-label="Kép 5">
+            <img src="pictures/PXL_20260523_114004051.jpg" alt="Zongora szállítása 5" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_114013959.MP.jpg" aria-label="Kép 5">
+            <img src="pictures/PXL_20260523_114013959.MP.jpg" alt="Zongora szállítása 5" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_122754294.MP.jpg" aria-label="Kép 6">
+            <img src="pictures/PXL_20260523_122754294.MP.jpg" alt="Zongora szállítása 6" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_131519074.MP.jpg" aria-label="Kép 7">
+            <img src="pictures/PXL_20260523_131519074.MP.jpg" alt="Zongora szállítása 7" loading="lazy" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Nagyobb galéria kép">
+      <button type="button" class="gallery-lightbox-close" aria-label="Bezárás">×</button>
+      <button type="button" class="gallery-lightbox-nav gallery-lightbox-prev" aria-label="Előző kép">‹</button>
+      <button type="button" class="gallery-lightbox-nav gallery-lightbox-next" aria-label="Következő kép">›</button>
+      <img src="pictures/PXL_20260523_103217413.jpg" alt="Galéria nagy kép" />
     </div>
   </div>
 </section>
@@ -1090,9 +1307,113 @@
     });
   }
 
+  const galleryThumbs = document.querySelectorAll('.gallery-thumb');
+  const galleryPrev = document.querySelector('.gallery-nav-prev');
+  const galleryNext = document.querySelector('.gallery-nav-next');
+  const galleryLightbox = document.querySelector('.gallery-lightbox');
+  const galleryLightboxImage = galleryLightbox?.querySelector('img');
+  const galleryLightboxClose = galleryLightbox?.querySelector('.gallery-lightbox-close');
+  const galleryLightboxPrev = galleryLightbox?.querySelector('.gallery-lightbox-prev');
+  const galleryLightboxNext = galleryLightbox?.querySelector('.gallery-lightbox-next');
+  let galleryIndex = 0;
+  const galleryVisible = 4;
+  let currentLightboxIndex = 0;
+
+  function updateGalleryVisible() {
+    galleryThumbs.forEach((thumb, index) => {
+      thumb.style.display = index >= galleryIndex && index < galleryIndex + galleryVisible ? 'block' : 'none';
+    });
+    if (galleryPrev) galleryPrev.disabled = galleryIndex === 0;
+    if (galleryNext) galleryNext.disabled = galleryIndex >= galleryThumbs.length - galleryVisible;
+  }
+
+  function showLightboxImage(index) {
+    if (!galleryLightboxImage || index < 0 || index >= galleryThumbs.length) return;
+    const thumb = galleryThumbs[index];
+    const src = thumb.getAttribute('data-src');
+    if (!src) return;
+    galleryThumbs.forEach((btn) => btn.classList.remove('active'));
+    thumb.classList.add('active');
+    galleryLightboxImage.src = src;
+    currentLightboxIndex = index;
+  }
+
+  function openLightbox(index) {
+    if (!galleryLightbox) return;
+    showLightboxImage(index);
+    galleryLightbox.classList.add('open');
+  }
+
+  function closeLightbox() {
+    galleryLightbox?.classList.remove('open');
+  }
+
+  galleryThumbs.forEach((thumb, index) => {
+    thumb.addEventListener('click', () => {
+      galleryThumbs.forEach((btn) => btn.classList.remove('active'));
+      thumb.classList.add('active');
+      openLightbox(index);
+    });
+  });
+
+  if (galleryPrev) {
+    galleryPrev.addEventListener('click', () => {
+      galleryIndex = Math.max(0, galleryIndex - galleryVisible);
+      updateGalleryVisible();
+    });
+  }
+
+  if (galleryNext) {
+    galleryNext.addEventListener('click', () => {
+      galleryIndex = Math.min(galleryThumbs.length - galleryVisible, galleryIndex + galleryVisible);
+      updateGalleryVisible();
+    });
+  }
+
+  updateGalleryVisible();
+
+  if (galleryLightboxClose) {
+    galleryLightboxClose.addEventListener('click', closeLightbox);
+  }
+
+  if (galleryLightbox) {
+    galleryLightbox.addEventListener('click', (event) => {
+      if (event.target === galleryLightbox) {
+        closeLightbox();
+      }
+    });
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeLightbox();
+      }
+      if (!galleryLightbox.classList.contains('open')) return;
+      if (event.key === 'ArrowRight') {
+        const nextIndex = (currentLightboxIndex + 1) % galleryThumbs.length;
+        openLightbox(nextIndex);
+      }
+      if (event.key === 'ArrowLeft') {
+        const prevIndex = (currentLightboxIndex - 1 + galleryThumbs.length) % galleryThumbs.length;
+        openLightbox(prevIndex);
+      }
+    });
+  }
+  if (galleryLightboxNext) {
+    galleryLightboxNext.addEventListener('click', () => {
+      const nextIndex = (currentLightboxIndex + 1) % galleryThumbs.length;
+      openLightbox(nextIndex);
+    });
+  }
+  if (galleryLightboxPrev) {
+    galleryLightboxPrev.addEventListener('click', () => {
+      const prevIndex = (currentLightboxIndex - 1 + galleryThumbs.length) % galleryThumbs.length;
+      openLightbox(prevIndex);
+    });
+  }
+
   const i18n = {
     hu: {
       nav_about: 'Rólunk',
+      nav_gallery: 'Galéria',
       nav_prices: 'Árlista',
       nav_contact: 'Kapcsolat',
       hero_tag: 'Professzionális zongora szállítás',
@@ -1113,6 +1434,7 @@
       feat_4_d: 'Budapest és vidék egyaránt.',
       feat_5_t: 'Hét minden napján',
       feat_5_d: 'Hétvégén és ünnepnapokon is elvállalunk szállítást.',
+      gallery_title: 'Galéria',
       prices_tag: 'Árlista',
       prices_title: 'Tájékoztató <em>áraink</em>',
       th_service: 'Szolgáltatás',
@@ -1138,6 +1460,7 @@
     },
     en: {
       nav_about: 'About',
+      nav_gallery: 'Gallery',
       nav_prices: 'Price List',
       nav_contact: 'Contact',
       hero_tag: 'Professional Piano Transport',
@@ -1158,6 +1481,7 @@
       feat_4_d: 'Budapest and the rest of Hungary alike.',
       feat_5_t: 'Every Day of the Week',
       feat_5_d: 'We take jobs on weekends and public holidays too.',
+      gallery_title: 'Gallery',
       prices_tag: 'Price List',
       prices_title: 'Indicative <em>prices</em>',
       th_service: 'Service',
