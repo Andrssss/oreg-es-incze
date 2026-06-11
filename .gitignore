@@ -1,2 +1,8 @@
 # Local Netlify folder
 .netlify
+
+# Image compression
+node_modules/
+package.json
+package-lock.json
+compress-images.js
