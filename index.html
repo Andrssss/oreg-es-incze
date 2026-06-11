@@ -1523,11 +1523,11 @@
         const dist = Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
         const newScale = Math.max(1, Math.min(zoomMax, pinchStartScale * (dist / pinchStartDist)));
         if (newScale === 1) { resetZoom(); return; }
-        const rect = galleryLightboxImage.getBoundingClientRect();
-        const cx = pinchMidX - (rect.left + rect.width / 2);
-        const cy = pinchMidY - (rect.top + rect.height / 2);
-        panX = pinchStartPanX + cx * (1 - newScale / pinchStartScale);
-        panY = pinchStartPanY + cy * (1 - newScale / pinchStartScale);
+        const cx = galleryLightbox.offsetWidth / 2;
+        const cy = galleryLightbox.offsetHeight / 2;
+        const ratio = newScale / pinchStartScale;
+        panX = (pinchMidX - cx) - (pinchMidX - cx - pinchStartPanX) * ratio;
+        panY = (pinchMidY - cy) - (pinchMidY - cy - pinchStartPanY) * ratio;
         zoomScale = newScale;
         applyZoomTransform();
       } else if (e.touches.length === 1 && touchPanning) {
