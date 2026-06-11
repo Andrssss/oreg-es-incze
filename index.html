@@ -1420,8 +1420,20 @@
   let panX = 0;
   let panY = 0;
 
+  function clampPan() {
+    const imgW = galleryLightboxImage.offsetWidth;
+    const imgH = galleryLightboxImage.offsetHeight;
+    const viewW = galleryLightbox.offsetWidth;
+    const viewH = galleryLightbox.offsetHeight;
+    const maxX = Math.max(0, (zoomScale * imgW - viewW) / 2);
+    const maxY = Math.max(0, (zoomScale * imgH - viewH) / 2);
+    panX = Math.max(-maxX, Math.min(maxX, panX));
+    panY = Math.max(-maxY, Math.min(maxY, panY));
+  }
+
   function applyZoomTransform() {
     if (!galleryLightboxImage) return;
+    clampPan();
     galleryLightboxImage.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomScale})`;
     galleryLightbox.classList.toggle('can-pan', zoomScale > 1);
   }
@@ -1442,6 +1454,7 @@
       const factor = e.deltaY < 0 ? 1.12 : 1 / 1.12;
       const newScale = Math.max(1, Math.min(zoomMax, zoomScale * factor));
       if (newScale === zoomScale) return;
+      if (newScale === 1) { resetZoom(); return; }
       const rect = galleryLightboxImage.getBoundingClientRect();
       const cx = e.clientX - (rect.left + rect.width / 2);
       const cy = e.clientY - (rect.top + rect.height / 2);
@@ -1509,6 +1522,7 @@
         const t = e.touches;
         const dist = Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
         const newScale = Math.max(1, Math.min(zoomMax, pinchStartScale * (dist / pinchStartDist)));
+        if (newScale === 1) { resetZoom(); return; }
         const rect = galleryLightboxImage.getBoundingClientRect();
         const cx = pinchMidX - (rect.left + rect.width / 2);
         const cy = pinchMidY - (rect.top + rect.height / 2);
