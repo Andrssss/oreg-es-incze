@@ -1022,6 +1022,9 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
       footer { flex-direction: column; gap: 10px; text-align: center; }
+      .partner-strip { padding: 28px 16px; }
+      .partner-logo-img { max-width: min(180px, 60vw); }
+      .partner-strip .section-tag { font-size: 1.1rem; }
     }
   </style>
   </style>
@@ -1050,14 +1053,11 @@
 
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-tag" data-i18n="hero_tag">Professzionális zongora szállítás</p>
+  <p class="hero-tag" data-i18n="hero_tag">Zongorákra specializált csapat</p>
   <h1 class="hero-title">ÖREG <span class="amp">&amp;</span> INCZE</h1>
-  <p class="hero-subtitle" data-i18n="hero_subtitle">Zongora Szállítás – Pontosan, Biztonságosan</p>
+  <p class="hero-subtitle" data-i18n-html="hero_subtitle">Bármilyen zongora, pianínó és nagytestű hangszer<br>szakszerű szállítása magánszemélyeknek, cégnek egyaránt.</p>
   <div class="hero-divider"></div>
-  <p class="hero-desc" data-i18n="hero_desc">
-    Zongorák és pianínók szakszerű szállítása magánszemélyeknek, 
-    zeneiskoláknak és hangversenyrendezőknek. Tapasztalat, amelyre számíthat.
-  </p>
+
   <a href="#arak" class="btn-primary" data-i18n="hero_button">Árlista</a>
 </section>
 
@@ -1074,28 +1074,12 @@
         <div class="section-line"></div>
         <p data-i18n="about_p1">
           1995 óta szállítunk zongorát és pianínót – Budapestről az ország minden sarkába.
-          Három évtized alatt megtanultunk mindent, amit a hangszer mozgatása megkövetel:
-          a nehéz lépcsőket, a szűk átjárókat és a zongora minden érzékeny pontját.
         </p>
         <p data-i18n="about_p2">
-          Pontosan, gyorsan, felelősséggel. Egyetlen célunk: a hangszer épségben,
-          a megbeszélt időpontban érjen célba.
+          Minden hangszert úgy kezelünk, mintha a sajátunk lenne. Harmadik generációs, családi vállalkozásként dolgozunk – a tapasztalat nálunk öröklődik.
         </p>
       </div>
       <div class="about-features">
-        <div class="feature-item">
-          <div class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="3" y="5" width="18" height="14" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M7 5v14M11 5v14M15 5v14" stroke="currentColor" stroke-width="1.3"/>
-              <path d="M9 5v8M13 5v8M17 5v8" stroke="currentColor" stroke-width="2"/>
-            </svg>
-          </div>
-          <div>
-            <div class="feature-title" data-i18n="feat_1_t">Zongorára szakosodott csapat</div>
-            <div class="feature-desc" data-i18n="feat_1_d">Bármilyen zongora, pianínó és nagytestű hangszer szállítását végezzük, különös figyelemmel a zongorák érzékeny mechanikájára.</div>
-          </div>
-        </div>
         <div class="feature-item">
           <div class="feature-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1142,35 +1126,31 @@
       <div class="gallery-block">
         <div class="gallery-header">
           <h3 class="gallery-title" id="galeria" data-i18n="gallery_title">Galéria</h3>
-          <div class="gallery-nav">
-            <button type="button" class="gallery-nav-btn gallery-nav-prev" aria-label="Előző képek">‹</button>
-            <button type="button" class="gallery-nav-btn gallery-nav-next" aria-label="Következő képek">›</button>
-          </div>
         </div>
         <div class="gallery-thumbs">
           <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_103217413.jpg" aria-label="Kép 1">
-            <img src="pictures/PXL_20260523_103217413.jpg" alt="Zongora szállítása 1" loading="lazy" />
+            <img data-lazy="pictures/thumb_PXL_20260523_103217413.jpg" alt="Zongora szállítása 1" />
           </button>
           <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_103226315.jpg" aria-label="Kép 2">
-            <img src="pictures/PXL_20260523_103226315.jpg" alt="Zongora szállítása 2" loading="lazy" />
+            <img data-lazy="pictures/thumb_PXL_20260523_103226315.jpg" alt="Zongora szállítása 2" />
           </button>
           <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_113950965.jpg" aria-label="Kép 3">
-            <img src="pictures/PXL_20260523_113950965.jpg" alt="Zongora szállítása 3" loading="lazy" />
+            <img data-lazy="pictures/thumb_PXL_20260523_113950965.jpg" alt="Zongora szállítása 3" />
           </button>
           <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_113541492.MP.jpg" aria-label="Kép 4">
-            <img src="pictures/PXL_20260523_113541492.MP.jpg" alt="Zongora szállítása 4" loading="lazy" />
+            <img data-lazy="pictures/thumb_PXL_20260523_113541492.MP.jpg" alt="Zongora szállítása 4" />
           </button>
           <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_114004051.jpg" aria-label="Kép 5">
-            <img src="pictures/PXL_20260523_114004051.jpg" alt="Zongora szállítása 5" loading="lazy" />
+            <img data-lazy="pictures/thumb_PXL_20260523_114004051.jpg" alt="Zongora szállítása 5" />
           </button>
-          <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_114013959.MP.jpg" aria-label="Kép 5">
-            <img src="pictures/PXL_20260523_114013959.MP.jpg" alt="Zongora szállítása 5" loading="lazy" />
+          <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_114013959.MP.jpg" aria-label="Kép 6">
+            <img data-lazy="pictures/thumb_PXL_20260523_114013959.MP.jpg" alt="Zongora szállítása 6" />
           </button>
-          <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_122754294.MP.jpg" aria-label="Kép 6">
-            <img src="pictures/PXL_20260523_122754294.MP.jpg" alt="Zongora szállítása 6" loading="lazy" />
+          <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_122754294.MP.jpg" aria-label="Kép 7">
+            <img data-lazy="pictures/thumb_PXL_20260523_122754294.MP.jpg" alt="Zongora szállítása 7" />
           </button>
-          <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_131519074.MP.jpg" aria-label="Kép 7">
-            <img src="pictures/PXL_20260523_131519074.MP.jpg" alt="Zongora szállítása 7" loading="lazy" />
+          <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_131519074.MP.jpg" aria-label="Kép 8">
+            <img data-lazy="pictures/thumb_PXL_20260523_131519074.MP.jpg" alt="Zongora szállítása 8" />
           </button>
         </div>
       </div>
@@ -1179,7 +1159,6 @@
       <button type="button" class="gallery-lightbox-close" aria-label="Bezárás">×</button>
       <button type="button" class="gallery-lightbox-nav gallery-lightbox-prev" aria-label="Előző kép">‹</button>
       <button type="button" class="gallery-lightbox-nav gallery-lightbox-next" aria-label="Következő kép">›</button>
-      <img src="pictures/PXL_20260523_103217413.jpg" alt="Galéria nagy kép" />
     </div>
   </div>
 </section>
@@ -1243,7 +1222,7 @@
 <section id="kapcsolat">
   <div class="section-inner contact-inner">
     <h2 class="section-title" style="text-align:center" data-i18n-html="contact_title">Lépjen velünk <em>kapcsolatba</em></h2>
-    <div class="section-line" style="margin:0 auto 60px"></div>
+    <div class="section-line" style="margin:0 auto 6px"></div>
 
     <div class="contact-stack">
       <a href="tel:+36209629001" class="contact-line">
@@ -1309,36 +1288,89 @@
     });
   }
 
+  // Load thumbnails via IntersectionObserver (once per image, never re-fetches)
+  const lazyImages = document.querySelectorAll('img[data-lazy]');
+  if ('IntersectionObserver' in window) {
+    const imgObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (!img.src || img.src === window.location.href) img.src = img.dataset.lazy;
+          imgObserver.unobserve(img);
+        }
+      });
+    }, { rootMargin: '300px' });
+    lazyImages.forEach((img) => imgObserver.observe(img));
+  } else {
+    lazyImages.forEach((img) => { img.src = img.dataset.lazy; });
+  }
+
   const galleryThumbs = document.querySelectorAll('.gallery-thumb');
-  const galleryPrev = document.querySelector('.gallery-nav-prev');
-  const galleryNext = document.querySelector('.gallery-nav-next');
   const galleryLightbox = document.querySelector('.gallery-lightbox');
-  const galleryLightboxImage = galleryLightbox?.querySelector('img');
   const galleryLightboxClose = galleryLightbox?.querySelector('.gallery-lightbox-close');
   const galleryLightboxPrev = galleryLightbox?.querySelector('.gallery-lightbox-prev');
   const galleryLightboxNext = galleryLightbox?.querySelector('.gallery-lightbox-next');
-  let galleryIndex = 0;
-  const galleryVisible = 4;
   let currentLightboxIndex = 0;
 
-  function updateGalleryVisible() {
-    galleryThumbs.forEach((thumb, index) => {
-      thumb.style.display = index >= galleryIndex && index < galleryIndex + galleryVisible ? 'block' : 'none';
-    });
-    if (galleryPrev) galleryPrev.disabled = galleryIndex === 0;
-    if (galleryNext) galleryNext.disabled = galleryIndex >= galleryThumbs.length - galleryVisible;
+  // One <img> per gallery image – src never changes, browser never re-fetches
+  const lightboxImgPool = new Map();
+  let lightboxActiveImg = null;
+
+  function getLightboxPoolImg(src) {
+    if (lightboxImgPool.has(src)) return lightboxImgPool.get(src);
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = 'Galéria nagy kép';
+    img.style.display = 'none';
+    galleryLightbox.appendChild(img);
+    lightboxImgPool.set(src, img);
+    return img;
+  }
+
+  // Zoom & pan state
+  let zoomScale = 1;
+  const zoomMax = 5;
+  let panX = 0;
+  let panY = 0;
+
+  function clampPan() {
+    if (!lightboxActiveImg) return;
+    const maxX = Math.max(0, (zoomScale * lightboxActiveImg.offsetWidth - galleryLightbox.offsetWidth) / 2);
+    const maxY = Math.max(0, (zoomScale * lightboxActiveImg.offsetHeight - galleryLightbox.offsetHeight) / 2);
+    panX = Math.max(-maxX, Math.min(maxX, panX));
+    panY = Math.max(-maxY, Math.min(maxY, panY));
+  }
+
+  function applyZoomTransform() {
+    if (!lightboxActiveImg) return;
+    clampPan();
+    lightboxActiveImg.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomScale})`;
+    galleryLightbox.classList.toggle('can-pan', zoomScale > 1);
+  }
+
+  function resetZoom() {
+    zoomScale = 1; panX = 0; panY = 0;
+    if (lightboxActiveImg) lightboxActiveImg.style.transform = '';
+    galleryLightbox?.classList.remove('can-pan');
   }
 
   function showLightboxImage(index) {
-    if (!galleryLightboxImage || index < 0 || index >= galleryThumbs.length) return;
-    resetZoom();
-    const thumb = galleryThumbs[index];
-    const src = thumb.getAttribute('data-src');
+    if (!galleryLightbox || index < 0 || index >= galleryThumbs.length) return;
+    const src = galleryThumbs[index].getAttribute('data-src');
     if (!src) return;
-    galleryThumbs.forEach((btn) => btn.classList.remove('active'));
-    thumb.classList.add('active');
-    galleryLightboxImage.src = src;
+    resetZoom();
+    galleryThumbs.forEach(btn => btn.classList.remove('active'));
+    galleryThumbs[index].classList.add('active');
     currentLightboxIndex = index;
+    if (lightboxActiveImg) lightboxActiveImg.style.display = 'none';
+    lightboxActiveImg = getLightboxPoolImg(src);
+    lightboxActiveImg.style.display = 'block';
+    // preload szomszéd képek
+    const n = galleryThumbs.length;
+    const ns = galleryThumbs[(index + 1) % n]?.getAttribute('data-src');
+    const ps = galleryThumbs[(index - 1 + n) % n]?.getAttribute('data-src');
+    if (ns) getLightboxPoolImg(ns);
+    if (ps) getLightboxPoolImg(ps);
   }
 
   function openLightbox(index) {
@@ -1353,129 +1385,47 @@
   }
 
   galleryThumbs.forEach((thumb, index) => {
-    thumb.addEventListener('click', () => {
-      galleryThumbs.forEach((btn) => btn.classList.remove('active'));
-      thumb.classList.add('active');
-      openLightbox(index);
-    });
+    thumb.addEventListener('click', () => openLightbox(index));
   });
 
-  if (galleryPrev) {
-    galleryPrev.addEventListener('click', () => {
-      galleryIndex = Math.max(0, galleryIndex - galleryVisible);
-      updateGalleryVisible();
-    });
-  }
-
-  if (galleryNext) {
-    galleryNext.addEventListener('click', () => {
-      galleryIndex = Math.min(galleryThumbs.length - galleryVisible, galleryIndex + galleryVisible);
-      updateGalleryVisible();
-    });
-  }
-
-  updateGalleryVisible();
-
-  if (galleryLightboxClose) {
-    galleryLightboxClose.addEventListener('click', closeLightbox);
-  }
+  galleryLightboxClose?.addEventListener('click', closeLightbox);
 
   if (galleryLightbox) {
-    galleryLightbox.addEventListener('click', (event) => {
-      if (event.target === galleryLightbox) {
-        closeLightbox();
-      }
+    galleryLightbox.addEventListener('click', (e) => {
+      if (e.target === galleryLightbox) closeLightbox();
     });
-    window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        closeLightbox();
-      }
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { closeLightbox(); return; }
       if (!galleryLightbox.classList.contains('open')) return;
-      if (event.key === 'ArrowRight') {
-        const nextIndex = (currentLightboxIndex + 1) % galleryThumbs.length;
-        openLightbox(nextIndex);
-      }
-      if (event.key === 'ArrowLeft') {
-        const prevIndex = (currentLightboxIndex - 1 + galleryThumbs.length) % galleryThumbs.length;
-        openLightbox(prevIndex);
-      }
+      const n = galleryThumbs.length;
+      if (e.key === 'ArrowRight') openLightbox((currentLightboxIndex + 1) % n);
+      if (e.key === 'ArrowLeft') openLightbox((currentLightboxIndex - 1 + n) % n);
     });
-  }
-  if (galleryLightboxNext) {
-    galleryLightboxNext.addEventListener('click', () => {
-      const nextIndex = (currentLightboxIndex + 1) % galleryThumbs.length;
-      openLightbox(nextIndex);
-    });
-  }
-  if (galleryLightboxPrev) {
-    galleryLightboxPrev.addEventListener('click', () => {
-      const prevIndex = (currentLightboxIndex - 1 + galleryThumbs.length) % galleryThumbs.length;
-      openLightbox(prevIndex);
-    });
-  }
 
-  // Zoom & pan state
-  let zoomScale = 1;
-  const zoomMax = 5;
-  let panX = 0;
-  let panY = 0;
-
-  function clampPan() {
-    const imgW = galleryLightboxImage.offsetWidth;
-    const imgH = galleryLightboxImage.offsetHeight;
-    const viewW = galleryLightbox.offsetWidth;
-    const viewH = galleryLightbox.offsetHeight;
-    const maxX = Math.max(0, (zoomScale * imgW - viewW) / 2);
-    const maxY = Math.max(0, (zoomScale * imgH - viewH) / 2);
-    panX = Math.max(-maxX, Math.min(maxX, panX));
-    panY = Math.max(-maxY, Math.min(maxY, panY));
-  }
-
-  function applyZoomTransform() {
-    if (!galleryLightboxImage) return;
-    clampPan();
-    galleryLightboxImage.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomScale})`;
-    galleryLightbox.classList.toggle('can-pan', zoomScale > 1);
-  }
-
-  function resetZoom() {
-    zoomScale = 1;
-    panX = 0;
-    panY = 0;
-    if (galleryLightboxImage) galleryLightboxImage.style.transform = '';
-    if (galleryLightbox) galleryLightbox.classList.remove('can-pan');
-  }
-
-  if (galleryLightbox) {
     // Mouse wheel zoom
     galleryLightbox.addEventListener('wheel', (e) => {
-      if (!galleryLightbox.classList.contains('open')) return;
+      if (!galleryLightbox.classList.contains('open') || !lightboxActiveImg) return;
       e.preventDefault();
       const factor = e.deltaY < 0 ? 1.12 : 1 / 1.12;
       const newScale = Math.max(1, Math.min(zoomMax, zoomScale * factor));
       if (newScale === zoomScale) return;
       if (newScale === 1) { resetZoom(); return; }
-      const rect = galleryLightboxImage.getBoundingClientRect();
-      const cx = e.clientX - (rect.left + rect.width / 2);
-      const cy = e.clientY - (rect.top + rect.height / 2);
-      panX += cx * (1 - newScale / zoomScale);
-      panY += cy * (1 - newScale / zoomScale);
+      const rect = lightboxActiveImg.getBoundingClientRect();
+      panX += (e.clientX - (rect.left + rect.width / 2)) * (1 - newScale / zoomScale);
+      panY += (e.clientY - (rect.top + rect.height / 2)) * (1 - newScale / zoomScale);
       zoomScale = newScale;
       applyZoomTransform();
     }, { passive: false });
 
-    // Mouse pan
-    let isPanning = false;
-    let panStartX = 0;
-    let panStartY = 0;
-
-    galleryLightboxImage?.addEventListener('mousedown', (e) => {
-      if (zoomScale <= 1) return;
+    // Mouse pan (event delegation)
+    let isPanning = false, panStartX = 0, panStartY = 0;
+    galleryLightbox.addEventListener('mousedown', (e) => {
+      if (!lightboxActiveImg || !lightboxActiveImg.contains(e.target) || zoomScale <= 1) return;
       e.preventDefault();
       isPanning = true;
       panStartX = e.clientX - panX;
       panStartY = e.clientY - panY;
-      galleryLightboxImage.classList.add('panning');
+      lightboxActiveImg.classList.add('panning');
     });
     window.addEventListener('mousemove', (e) => {
       if (!isPanning) return;
@@ -1485,19 +1435,13 @@
     });
     window.addEventListener('mouseup', () => {
       isPanning = false;
-      galleryLightboxImage?.classList.remove('panning');
+      lightboxActiveImg?.classList.remove('panning');
     });
 
     // Pinch-to-zoom + touch pan
-    let pinchStartDist = 0;
-    let pinchStartScale = 1;
-    let pinchMidX = 0;
-    let pinchMidY = 0;
-    let pinchStartPanX = 0;
-    let pinchStartPanY = 0;
-    let touchPanning = false;
-    let touchPanStartX = 0;
-    let touchPanStartY = 0;
+    let pinchStartDist = 0, pinchStartScale = 1, pinchMidX = 0, pinchMidY = 0;
+    let pinchStartPanX = 0, pinchStartPanY = 0;
+    let touchPanning = false, touchPanStartX = 0, touchPanStartY = 0;
 
     galleryLightbox.addEventListener('touchstart', (e) => {
       if (e.touches.length === 2) {
@@ -1506,8 +1450,7 @@
         pinchStartScale = zoomScale;
         pinchMidX = (t[0].clientX + t[1].clientX) / 2;
         pinchMidY = (t[0].clientY + t[1].clientY) / 2;
-        pinchStartPanX = panX;
-        pinchStartPanY = panY;
+        pinchStartPanX = panX; pinchStartPanY = panY;
         touchPanning = false;
       } else if (e.touches.length === 1 && zoomScale > 1) {
         touchPanning = true;
@@ -1547,16 +1490,13 @@
       nav_gallery: 'Galéria',
       nav_prices: 'Árlista',
       nav_contact: 'Kapcsolat',
-      hero_tag: 'Professzionális zongora szállítás',
-      hero_subtitle: 'Zongora Szállítás – Pontosan, Biztonságosan',
-      hero_desc: 'Bármilyen zongora, pianínó és nagytestű hangszer szakszerű szállítása magánszemélyeknek, zeneiskoláknak és hangversenyrendezőknek. Zongorára szakosodott csapatként dolgozunk, tapasztalattal, amelyre számíthat.',
+      hero_tag: 'Zongorákra specializált csapat',
+      hero_subtitle: 'Bármilyen zongora, pianínó és nagytestű hangszer<br>szakszerű szállítása magánszemélyeknek, cégnek egyaránt.',
       hero_button: 'Árlista',
       about_tag: 'Rólunk',
-      about_title: 'Alapítás éve <em>1995</em>',
-      about_p1: '1995 óta szállítunk zongorát és pianínót – Budapestről az ország minden sarkába. Három évtized alatt megtanultunk mindent, amit a hangszer mozgatása megkövetel: a nehéz lépcsőket, a szűk átjárókat és a zongora minden érzékeny pontját.',
-      about_p2: 'Pontosan, gyorsan, felelősséggel. Egyetlen célunk: a hangszer épségben, a megbeszélt időpontban érjen célba.',
-      feat_1_t: 'Zongorára szakosodott csapat',
-      feat_1_d: 'Bármilyen zongora, pianínó és nagytestű hangszer szállítását végezzük, különös figyelemmel a zongorák érzékeny mechanikájára.',
+      about_title: '<em>1995</em> óta',
+      about_p1: '1995 óta szállítunk zongorát és pianínót – Budapestről az ország minden sarkába.',
+      about_p2: 'Minden hangszert úgy kezelünk, mintha a sajátunk lenne. Harmadik generációs, családi vállalkozásként dolgozunk – a tapasztalat nálunk öröklődik.',
       feat_2_t: 'Biztosított szállítás',
       feat_2_d: 'Cégünk általános felelősségbiztosítással rendelkezik, amely fedezetet nyújt a szállítás során esetlegesen bekövetkező károkra.',
       feat_3_t: 'Kíméletes rögzítés és védelem',
@@ -1594,16 +1534,13 @@
       nav_gallery: 'Gallery',
       nav_prices: 'Price List',
       nav_contact: 'Contact',
-      hero_tag: 'Professional Piano Transport',
-      hero_subtitle: 'Piano Transport - Precise and Safe',
-      hero_desc: 'Professional transport of any piano, upright piano, and large-bodied instrument for private clients, music schools, and concert organizers. We are a piano-specialized moving team you can rely on.',
+      hero_tag: 'A Piano-Specialized Team',
+      hero_subtitle: 'Professional transport of any piano, upright piano, and large instrument<br>for private individuals and businesses alike.',
       hero_button: 'Price List',
       about_tag: 'About',
       about_title: 'Founded in <em>1995</em>',
-      about_p1: 'Since 1995, we have been transporting pianos and upright pianos from Budapest to every corner of Hungary. Three decades have taught us everything the job demands: narrow stairwells, tight doorways, and every vulnerable point of the instrument.',
-      about_p2: 'Precise, fast, and accountable. One goal: your instrument arrives intact, at the agreed time.',
-      feat_1_t: 'Piano-Specialized Team',
-      feat_1_d: 'We transport any piano, upright piano, and large-bodied instrument, with extra care for sensitive piano mechanics.',
+      about_p1: 'Since 1995, we have been transporting pianos and upright pianos from Budapest to every corner of Hungary.',
+      about_p2: 'We treat every instrument as if it were our own. As a third-generation family business, our expertise is built to last.',
       feat_2_t: 'Insured Transport',
       feat_2_d: 'Our company holds general liability insurance covering potential damage during transport.',
       feat_3_t: 'Protective Securing',
