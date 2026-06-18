@@ -1387,6 +1387,15 @@
 
   galleryLightboxClose?.addEventListener('click', closeLightbox);
 
+  galleryLightboxPrev?.addEventListener('click', () => {
+    const n = galleryThumbs.length;
+    showLightboxImage((currentLightboxIndex - 1 + n) % n);
+  });
+  galleryLightboxNext?.addEventListener('click', () => {
+    const n = galleryThumbs.length;
+    showLightboxImage((currentLightboxIndex + 1) % n);
+  });
+
   if (galleryLightbox) {
     galleryLightbox.addEventListener('click', (e) => {
       if (e.target === galleryLightbox) closeLightbox();
