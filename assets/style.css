@@ -1009,24 +1009,6 @@
       font-size: 1.3rem;
       margin-bottom: 18px;
     }
-    .related-pages {
-      margin-top: 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2px;
-    }
-    .related-pages a {
-      display: block;
-      background: var(--dark-gray);
-      color: var(--pure-white);
-      text-decoration: none;
-      padding: 20px;
-      font-family: 'Noto Serif', 'Playfair Display', Georgia, serif;
-      font-size: 1.2rem;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.3s, background 0.3s;
-    }
-    .related-pages a:hover { border-color: var(--accent); background: #1f1f1f; }
     .footer-linkrow {
       background: var(--off-black);
       border-top: 1px solid #1a1a1a;
