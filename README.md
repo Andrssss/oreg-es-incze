@@ -14,6 +14,9 @@ Statikus, build lépés nélküli HTML/CSS/JS oldal kétnyelvű (HU/EN) felület
 | `/pianino-szallitas/` | Pianínó szállítás |
 | `/zongoraszallitas-arak/` | Részletes árak, emeleti felár, kilométerdíj |
 | `/zongoraszallitas-orszagosan/` | Országos szállítás (Budapest–vidék, vidék–vidék) |
+| `/zongoraszallitas-pest-megye/` | Szállítás Pest megyében, településlistával |
+| `/hangszerszallitas/` | Hangszerszállítás (csembaló, egyéb nagytestű hangszerek) |
+| `/zongoraszallitas-tippek/` | Tippek a zongora költöztetése előtt |
 | `/gyik/` | Gyakori kérdések |
 
 ## Képernyőképek
@@ -56,6 +59,9 @@ oreg-es-incze/
 ├── pianino-szallitas/
 ├── zongoraszallitas-arak/
 ├── zongoraszallitas-orszagosan/
+├── zongoraszallitas-pest-megye/
+├── hangszerszallitas/
+├── zongoraszallitas-tippek/
 ├── gyik/
 ├── pictures/                     # galéria: teljes méretű képek + thumb_* bélyegképek
 ├── logo.svg, sonata.webp, sonata.png

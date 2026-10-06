@@ -123,6 +123,7 @@
       cursor: pointer;
       transition: background 0.25s;
     }
+    a.lang-btn { display: inline-block; text-decoration: none; }
     .lang-btn:hover { color: var(--white); }
     .lang-btn.active {
       color: var(--black);
@@ -1012,17 +1013,32 @@
     .footer-linkrow {
       background: var(--off-black);
       border-top: 1px solid #1a1a1a;
-      padding: 22px 28px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 22px;
-      justify-content: center;
+      padding: 36px 28px 28px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px 32px;
+      max-width: 100%;
+    }
+    .footer-linkrow > .fl-col { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    @media (min-width: 1000px) {
+      .footer-linkrow { padding-left: calc((100% - 900px) / 2); padding-right: calc((100% - 900px) / 2); }
+    }
+    @media (max-width: 640px) {
+      .footer-linkrow { grid-template-columns: repeat(2, 1fr); padding: 28px 20px 20px; }
+    }
+    .footer-linkrow h4 {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin: 0 0 4px;
     }
     .footer-linkrow a {
       color: var(--light-gray);
       font-size: 1.05rem;
       text-decoration: none;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
     }
     .footer-linkrow a:hover { color: var(--accent); }
     @media (max-width: 600px) {

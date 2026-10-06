@@ -87,7 +87,7 @@
       "publisher": { "@id": "https://hangszerszallitas.hu/#business" }
     }
   </script>
-  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/style.css?v=5">
 </head>
 <body>
 
@@ -101,7 +101,7 @@
     <li><a href="#rolunk" data-i18n="nav_about">Rólunk</a></li>
     <li><a href="#galeria" data-i18n="nav_gallery">Galéria</a></li>
     <li><a href="#arak" data-i18n="nav_prices">Árlista</a></li>
-    <li><a href="/gyik/" data-i18n="nav_faq">GYIK</a></li>
+    <li><a href="/gyik/" data-en-href="/en/faq/" data-i18n="nav_faq">GYIK</a></li>
     <li><a href="#kapcsolat" data-i18n="nav_contact">Kapcsolat</a></li>
   </ul>
   <div class="nav-right">
@@ -317,12 +317,28 @@
 
 <!-- FOOTER LINK ROW -->
 <div class="footer-linkrow">
-  <a href="/">Főoldal</a>
-  <a href="/zongoraszallitas-budapest/">Zongoraszállítás Budapest</a>
-  <a href="/pianino-szallitas/">Pianínó szállítás</a>
-  <a href="/zongoraszallitas-arak/">Zongoraszállítás árak</a>
-  <a href="/zongoraszallitas-orszagosan/">Országos zongoraszállítás</a>
-  <a href="/gyik/">GYIK</a>
+  <div class="fl-col">
+    <h4 data-i18n="fl_h_transport">Szállítás</h4>
+    <a href="/zongoraszallitas-budapest/" data-en-href="/en/piano-moving-budapest/" data-i18n="fl_budapest">Budapest</a>
+    <a href="/zongoraszallitas-pest-megye/" data-en-href="/en/piano-moving-pest-county/" data-i18n="fl_pest">Pest megye</a>
+    <a href="/zongoraszallitas-orszagosan/" data-en-href="/en/piano-moving-nationwide/" data-i18n="fl_national">Országos</a>
+  </div>
+  <div class="fl-col">
+    <h4 data-i18n="fl_h_instruments">Hangszerek</h4>
+    <a href="/pianino-szallitas/" data-en-href="/en/upright-piano-moving/" data-i18n="fl_upright">Pianínó</a>
+    <a href="/hangszerszallitas/" data-en-href="/en/instrument-moving/" data-i18n="fl_other">Egyéb hangszerek</a>
+  </div>
+  <div class="fl-col">
+    <h4 data-i18n="fl_h_info">Tudnivalók</h4>
+    <a href="/zongoraszallitas-arak/" data-en-href="/en/piano-moving-prices/" data-i18n="fl_prices">Árak</a>
+    <a href="/zongoraszallitas-tippek/" data-en-href="/en/piano-moving-tips/" data-i18n="fl_tips">Tippek</a>
+    <a href="/gyik/" data-en-href="/en/faq/" data-i18n="fl_faq">GYIK</a>
+  </div>
+  <div class="fl-col">
+    <h4 data-i18n="fl_h_company">Öreg &amp; Incze</h4>
+    <a href="/" data-i18n="fl_home">Főoldal</a>
+    <a href="tel:+36209629001">+36 20 962 9001</a>
+  </div>
 </div>
 
 <!-- FOOTER -->
@@ -611,7 +627,20 @@
       partner_link: 'szonatapiano.hu',
       contact_tag: 'Kapcsolat',
       contact_title: 'Lépjen velünk <em>kapcsolatba</em>',
-      footer_copy: '© 2026 Öreg & Incze Zongora Szállítás - Minden jog fenntartva'
+      footer_copy: '© 2026 Öreg & Incze Zongora Szállítás - Minden jog fenntartva',
+      fl_h_transport: 'Szállítás',
+      fl_h_instruments: 'Hangszerek',
+      fl_h_info: 'Tudnivalók',
+      fl_h_company: 'Öreg & Incze',
+      fl_budapest: 'Budapest',
+      fl_pest: 'Pest megye',
+      fl_national: 'Országos',
+      fl_upright: 'Pianínó',
+      fl_other: 'Egyéb hangszerek',
+      fl_prices: 'Árak',
+      fl_tips: 'Tippek',
+      fl_faq: 'GYIK',
+      fl_home: 'Főoldal'
     },
     en: {
       nav_about: 'About',
@@ -656,7 +685,20 @@
       partner_link: 'szonatapiano.hu',
       contact_tag: 'Contact',
       contact_title: 'Get in <em>touch</em>',
-      footer_copy: '© 2026 Oreg & Incze Piano Transport - All rights reserved'
+      footer_copy: '© 2026 Oreg & Incze Piano Transport - All rights reserved',
+      fl_h_transport: 'Transport',
+      fl_h_instruments: 'Instruments',
+      fl_h_info: 'Information',
+      fl_h_company: 'Öreg & Incze',
+      fl_budapest: 'Budapest',
+      fl_pest: 'Pest County',
+      fl_national: 'Nationwide',
+      fl_upright: 'Upright piano',
+      fl_other: 'Other instruments',
+      fl_prices: 'Prices',
+      fl_tips: 'Tips',
+      fl_faq: 'FAQ',
+      fl_home: 'Home'
     }
   };
 
@@ -679,6 +721,11 @@
       if (pack[key]) {
         el.innerHTML = pack[key];
       }
+    });
+
+    document.querySelectorAll('[data-en-href]').forEach((a) => {
+      if (!a.dataset.huHref) a.dataset.huHref = a.getAttribute('href');
+      a.setAttribute('href', lang === 'en' ? a.dataset.enHref : a.dataset.huHref);
     });
 
     langButtons.forEach((btn) => {
