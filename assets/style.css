@@ -799,8 +799,11 @@
       color: #555;
     }
     .footer-logo span { color: #666; font-style: italic; }
+    /* footer bottom row */
+    footer { flex-wrap: wrap; gap: 8px 24px; }
+    .footer-logo { white-space: nowrap; }
     .footer-copy {
-      font-size: 1.3rem;
+      font-size: 1rem;
       letter-spacing: 1px;
       color: #444;
     }
@@ -949,6 +952,7 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
       footer { flex-direction: column; gap: 10px; text-align: center; }
+      .footer-logo { font-size: 1.15rem; }
       .partner-strip { padding: 28px 16px; }
       .partner-logo-img { max-width: min(180px, 60vw); }
       .partner-strip .section-tag { font-size: 1.1rem; }

@@ -17,7 +17,9 @@ Statikus, build lépés nélküli HTML/CSS/JS oldal kétnyelvű (HU/EN) felület
 | `/zongoraszallitas-pest-megye/` | Szállítás Pest megyében, településlistával |
 | `/hangszerszallitas/` | Hangszerszállítás (csembaló, egyéb nagytestű hangszerek) |
 | `/zongoraszallitas-tippek/` | Tippek a zongora költöztetése előtt |
+| `/zongoraszallitas-budaors/`, `-erd/`, `-szentendre/`, `-godollo/` | Településoldalak (Pest megye) |
 | `/gyik/` | Gyakori kérdések |
+| `/en/...` | Az oldalak angol változata (HU/EN váltóval, hreflang párosítással), pl. `/en/piano-moving-budapest/` |
 
 ## Képernyőképek
 
@@ -63,6 +65,7 @@ oreg-es-incze/
 ├── hangszerszallitas/
 ├── zongoraszallitas-tippek/
 ├── gyik/
+├── en/                           # angol oldalak
 ├── pictures/                     # galéria: teljes méretű képek + thumb_* bélyegképek
 ├── logo.svg, sonata.webp, sonata.png
 ├── sitemap.xml, robots.txt
