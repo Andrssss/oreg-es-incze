@@ -1028,7 +1028,8 @@
       .footer-linkrow { padding-left: calc((100% - 900px) / 2); padding-right: calc((100% - 900px) / 2); }
     }
     @media (max-width: 640px) {
-      .footer-linkrow { grid-template-columns: repeat(2, 1fr); padding: 28px 20px 20px; }
+      .footer-linkrow { grid-template-columns: repeat(4, auto); justify-content: space-between; gap: 20px 10px; padding: 28px 12px 20px; }
+      .footer-linkrow > .fl-col { gap: 8px; }
     }
     .footer-linkrow h4 {
       color: var(--accent);
@@ -1045,6 +1046,10 @@
       letter-spacing: 0.2px;
     }
     .footer-linkrow a:hover { color: var(--accent); }
+    @media (max-width: 640px) {
+      .footer-linkrow h4 { font-size: 0.6rem; letter-spacing: 0.8px; }
+      .footer-linkrow a { font-size: 0.72rem; letter-spacing: 0; }
+    }
     @media (max-width: 600px) {
       .subpage-hero { padding: 100px 16px 36px; }
       .subpage-lead, .prose { font-size: 1.05rem; }
