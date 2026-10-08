@@ -36,7 +36,7 @@ A galéria képei (`pictures/`) saját szállításokról készültek:
 <p>
   <img src="pictures/thumb_PXL_20260523_103217413.jpg" width="24%" alt="Zongora szállítása 1" />
   <img src="pictures/thumb_PXL_20260523_113950965.jpg" width="24%" alt="Zongora szállítása 3" />
-  <img src="pictures/thumb_PXL_20260523_114004051.jpg" width="24%" alt="Zongora szállítása 5" />
+  <img src="pictures/thumb_zongora-lepcsojaro-furgon.jpg" width="24%" alt="Zongora szállítása 5" />
   <img src="pictures/thumb_PXL_20260523_131519074.MP.jpg" width="24%" alt="Zongora szállítása 8" />
 </p>
 
