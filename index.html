@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zongoraszállítás Budapesten és országosan | Öreg &amp; Incze</title>
-  <meta name="description" content="Zongora- és pianínószállítás Budapesten és országosan, biztosítással. Öreg &amp; Incze – családi vállalkozás 1995 óta, hétvégén is elérhető." />
+  <title>Zongora- és hangszerszállítás Budapesten és országosan | Öreg &amp; Incze</title>
+  <meta name="description" content="Zongora-, pianínó- és hangszerszállítás Budapesten és országosan, biztosítással. Öreg &amp; Incze – családi vállalkozás 1995 óta, hétvégén is elérhető." />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://hangszerszallitas.hu/" />
 
@@ -191,28 +191,28 @@
         </div>
         <div class="gallery-thumbs">
           <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_103217413.jpg" aria-label="Kép 1">
-            <img data-lazy="pictures/thumb_PXL_20260523_103217413.jpg" alt="Zongora szállítása 1" />
+            <img data-lazy="pictures/thumb_PXL_20260523_103217413.jpg" alt="Becsomagolt hangversenyzongora lépcsőjáró gépen egy budapesti bérház lépcsőjén" />
           </button>
           <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_103226315.jpg" aria-label="Kép 2">
-            <img data-lazy="pictures/thumb_PXL_20260523_103226315.jpg" alt="Zongora szállítása 2" />
+            <img data-lazy="pictures/thumb_PXL_20260523_103226315.jpg" alt="Hangversenyzongora szállítása lépcsőn, védőhuzattal és hevederrel rögzítve" />
           </button>
           <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_113950965.jpg" aria-label="Kép 3">
-            <img data-lazy="pictures/thumb_PXL_20260523_113950965.jpg" alt="Zongora szállítása 3" />
+            <img data-lazy="pictures/thumb_PXL_20260523_113950965.jpg" alt="Hangversenyzongora rögzítése fa szállítókeretben a színpadon" />
           </button>
           <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_113541492.MP.jpg" aria-label="Kép 4">
-            <img data-lazy="pictures/thumb_PXL_20260523_113541492.MP.jpg" alt="Zongora szállítása 4" />
+            <img data-lazy="pictures/thumb_PXL_20260523_113541492.MP.jpg" alt="Oldalára állított, becsomagolt zongora szállítókocsin egy szabadtéri színpadon" />
           </button>
           <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_114004051.jpg" aria-label="Kép 5">
-            <img data-lazy="pictures/thumb_PXL_20260523_114004051.jpg" alt="Zongora szállítása 5" />
+            <img data-lazy="pictures/thumb_PXL_20260523_114004051.jpg" alt="Hangversenyzongora visszaállítása a lábaira szabadtéri színpadon" />
           </button>
           <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_114013959.MP.jpg" aria-label="Kép 6">
-            <img data-lazy="pictures/thumb_PXL_20260523_114013959.MP.jpg" alt="Zongora szállítása 6" />
+            <img data-lazy="pictures/thumb_PXL_20260523_114013959.MP.jpg" alt="Letakart hangversenyzongora a helyére állítva egy szabadtéri színpadon" />
           </button>
           <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_122754294.MP.jpg" aria-label="Kép 7">
-            <img data-lazy="pictures/thumb_PXL_20260523_122754294.MP.jpg" alt="Zongora szállítása 7" />
+            <img data-lazy="pictures/thumb_PXL_20260523_122754294.MP.jpg" alt="Becsomagolt zongora hevederekkel rögzítve, szállítás az udvaron" />
           </button>
           <button type="button" class="gallery-thumb" data-src="pictures/PXL_20260523_131519074.MP.jpg" aria-label="Kép 8">
-            <img data-lazy="pictures/thumb_PXL_20260523_131519074.MP.jpg" alt="Zongora szállítása 8" />
+            <img data-lazy="pictures/thumb_PXL_20260523_131519074.MP.jpg" alt="Becsomagolt zongora lépcsőjáró gépen, rakodás az utcán" />
           </button>
         </div>
       </div>
@@ -407,11 +407,13 @@
   const lightboxImgPool = new Map();
   let lightboxActiveImg = null;
 
-  function getLightboxPoolImg(src) {
+  const thumbAlt = (i) => galleryThumbs[i]?.querySelector('img')?.alt || '';
+
+  function getLightboxPoolImg(src, alt) {
     if (lightboxImgPool.has(src)) return lightboxImgPool.get(src);
     const img = document.createElement('img');
     img.src = src;
-    img.alt = 'Galéria nagy kép';
+    img.alt = alt || 'Galéria nagy kép';
     img.style.display = 'none';
     galleryLightbox.appendChild(img);
     lightboxImgPool.set(src, img);
@@ -454,14 +456,14 @@
     galleryThumbs[index].classList.add('active');
     currentLightboxIndex = index;
     if (lightboxActiveImg) lightboxActiveImg.style.display = 'none';
-    lightboxActiveImg = getLightboxPoolImg(src);
+    lightboxActiveImg = getLightboxPoolImg(src, thumbAlt(index));
     lightboxActiveImg.style.display = 'block';
     // preload szomszéd képek
     const n = galleryThumbs.length;
     const ns = galleryThumbs[(index + 1) % n]?.getAttribute('data-src');
     const ps = galleryThumbs[(index - 1 + n) % n]?.getAttribute('data-src');
-    if (ns) getLightboxPoolImg(ns);
-    if (ps) getLightboxPoolImg(ps);
+    if (ns) getLightboxPoolImg(ns, thumbAlt((index + 1) % n));
+    if (ps) getLightboxPoolImg(ps, thumbAlt((index - 1 + n) % n));
   }
 
   function openLightbox(index) {
