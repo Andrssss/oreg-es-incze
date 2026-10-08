@@ -407,11 +407,13 @@
   const lightboxImgPool = new Map();
   let lightboxActiveImg = null;
 
-  function getLightboxPoolImg(src) {
+  const thumbAlt = (i) => galleryThumbs[i]?.querySelector('img')?.alt || '';
+
+  function getLightboxPoolImg(src, alt) {
     if (lightboxImgPool.has(src)) return lightboxImgPool.get(src);
     const img = document.createElement('img');
     img.src = src;
-    img.alt = 'Galéria nagy kép';
+    img.alt = alt || 'Galéria nagy kép';
     img.style.display = 'none';
     galleryLightbox.appendChild(img);
     lightboxImgPool.set(src, img);
@@ -454,14 +456,14 @@
     galleryThumbs[index].classList.add('active');
     currentLightboxIndex = index;
     if (lightboxActiveImg) lightboxActiveImg.style.display = 'none';
-    lightboxActiveImg = getLightboxPoolImg(src);
+    lightboxActiveImg = getLightboxPoolImg(src, thumbAlt(index));
     lightboxActiveImg.style.display = 'block';
     // preload szomszéd képek
     const n = galleryThumbs.length;
     const ns = galleryThumbs[(index + 1) % n]?.getAttribute('data-src');
     const ps = galleryThumbs[(index - 1 + n) % n]?.getAttribute('data-src');
-    if (ns) getLightboxPoolImg(ns);
-    if (ps) getLightboxPoolImg(ps);
+    if (ns) getLightboxPoolImg(ns, thumbAlt((index + 1) % n));
+    if (ps) getLightboxPoolImg(ps, thumbAlt((index - 1 + n) % n));
   }
 
   function openLightbox(index) {
