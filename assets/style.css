@@ -1068,10 +1068,6 @@
     }
     .home section,
     .home .partner-strip { padding: var(--sec) var(--side); }
-    .home #hero {
-      min-height: min(100svh, 680px);
-      padding: calc(var(--sec) + 24px) var(--side) var(--sec);
-    }
     .home .section-tag { margin-bottom: 12px; font-size: 1.15rem; }
     .home .section-title { margin-bottom: 12px; }
     .home .section-line { margin-bottom: var(--head); }
@@ -1090,7 +1086,6 @@
     .home .footer-linkrow { padding-block: var(--block); }
     @media (max-width: 900px) {
       .home { --sec: 56px; --head: 24px; --block: 28px; --side: 16px; }
-      .home #hero { min-height: 0; padding: 120px var(--side) var(--sec); }
       .home .about-grid { gap: var(--block); }
       .home .gallery-thumbs { gap: 12px; }
       .home .partner-logo-img { max-width: min(220px, 64vw); }
