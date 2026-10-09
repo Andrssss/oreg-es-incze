@@ -1057,3 +1057,36 @@
       .subpage-lead, .prose { font-size: 1.05rem; }
       .subpage-cta p { font-size: 1.05rem; }
     }
+
+    /* ── FŐOLDAL: EGYENLETES TÉRKÖZ-RITMUS ──
+       Minden szekció és cím–tartalom távolság ugyanabból a skálából jön (csak a főoldalon, body.home). */
+    .home {
+      --sec: clamp(56px, 8vw, 96px);
+      --head: 28px;
+      --block: 32px;
+      --side: 24px;
+    }
+    .home section,
+    .home .partner-strip { padding: var(--sec) var(--side); }
+    .home .section-tag { margin-bottom: 12px; font-size: 1.15rem; }
+    .home .section-title { margin-bottom: 12px; }
+    .home .section-line { margin-bottom: var(--head); }
+    .home .about-grid { gap: var(--block) 56px; align-items: start; }
+    .home .about-text p:last-child { margin-bottom: 0; }
+    .home .gallery-block { margin-top: var(--block); gap: 0; }
+    .home .gallery-header { margin-bottom: 12px; }
+    .home .gallery-title { margin-bottom: 0; }
+    .home .gallery-thumbs { gap: 16px; }
+    .home .price-notes,
+    .home .price-disclaimer { margin-top: var(--block); }
+    .home .partner-strip .section-inner { gap: 20px; }
+    .home .partner-strip .section-tag { font-size: 1.15rem; margin: 0; }
+    .home .contact-stack { padding: 0; gap: 24px; }
+    .home #kapcsolat .section-line { margin-bottom: var(--head); }
+    .home .footer-linkrow { padding-block: var(--block); }
+    @media (max-width: 900px) {
+      .home { --sec: 56px; --head: 24px; --block: 28px; --side: 16px; }
+      .home .about-grid { gap: var(--block); }
+      .home .gallery-thumbs { gap: 12px; }
+      .home .partner-logo-img { max-width: min(220px, 64vw); }
+    }
