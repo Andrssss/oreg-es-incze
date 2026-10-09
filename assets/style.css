@@ -231,7 +231,7 @@
 
     /* ── HERO ── */
     #hero {
-      min-height: calc(100svh - 40px);
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -628,6 +628,89 @@
       text-align: center;
     }
 
+    /* ── REVIEWS ── */
+    #velemenyek { background: var(--black); }
+    .reviews-carousel {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .reviews-track {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: stretch;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .reviews-track::-webkit-scrollbar { display: none; }
+    .reviews-track:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+    .review-card {
+      flex: 0 0 calc((100% - 32px) / 3);
+      scroll-snap-align: start;
+      margin: 0;
+      padding: 16px 18px;
+      background: var(--dark-gray);
+      border: 1px solid #2a2a2a;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 0.3s;
+    }
+    .review-card:hover { border-color: var(--accent); }
+    .review-stars { color: var(--accent); font-size: 1.05rem; letter-spacing: 2px; }
+    .review-text {
+      margin: 0;
+      color: var(--silver);
+      font-size: 1rem;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .review-price { color: var(--accent); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.3px; }
+    .review-author { color: var(--white); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.4px; }
+    .review-author a { color: inherit; text-decoration: none; }
+    .review-author a:hover { color: var(--accent); }
+    .review-source { color: var(--light-gray); font-weight: 400; margin-left: 8px; }
+    .review-source::before { content: "· "; }
+    .reviews-nav {
+      flex: none;
+      align-self: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--light-gray);
+      background: transparent;
+      color: var(--white);
+      font-size: 1.6rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, opacity 0.3s;
+    }
+    .reviews-nav:hover:not(:disabled) { background: var(--white); color: var(--black); }
+    .reviews-nav:disabled { opacity: 0.3; cursor: default; }
+    .reviews-nav[hidden] { display: none; }
+    .reviews-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+    @media (max-width: 1000px) {
+      .review-card { flex-basis: calc((100% - 16px) / 2); }
+    }
+    @media (max-width: 640px) {
+      #velemenyek { padding-top: 40px; padding-bottom: 40px; }
+      .review-card { flex-basis: 100%; padding: 12px 14px; gap: 6px; }
+      .review-stars { font-size: 0.9rem; letter-spacing: 1px; }
+      .review-text { font-size: 0.9rem; line-height: 1.45; }
+      .review-price { font-size: 0.85rem; }
+      .review-author { font-size: 0.85rem; }
+      .reviews-nav { width: 26px; height: 26px; font-size: 1.1rem; }
+      .reviews-carousel { gap: 6px; margin-bottom: 20px; }
+      .reviews-actions .btn-primary { padding: 7px 20px; font-size: 1rem; letter-spacing: 1px; }
+    }
+
     /* ── PRICES ── */
     #arak {
       background: var(--off-black);
@@ -921,7 +1004,7 @@
       nav { padding: 0 20px; }
       section { padding: 46px 16px; }
       #hero {
-        min-height: calc(100svh - 40px);
+        min-height: 100svh;
         padding: 110px 16px 20px;
       }
       .hero-title {

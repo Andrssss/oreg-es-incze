@@ -88,7 +88,7 @@
       "publisher": { "@id": "https://hangszerszallitas.hu/#business" }
     }
   </script>
-  <link rel="stylesheet" href="/assets/style.css?v=9">
+  <link rel="stylesheet" href="/assets/style.css?v=13">
 </head>
 <body class="home">
 <a class="topbar" href="tel:+36209629001"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.7 4h2.6l1.3 3.6-1.5 1.6a9.9 9.9 0 0 0 5.7 5.7l1.6-1.5 3.6 1.3V17c0 1.7-1.4 3-3 3A13 13 0 0 1 4 7c0-1.7 1.4-3 2.7-3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>+36 20 962 9001</a>
@@ -219,6 +219,43 @@
       <button type="button" class="gallery-lightbox-close" aria-label="Bezárás">×</button>
       <button type="button" class="gallery-lightbox-nav gallery-lightbox-prev" aria-label="Előző kép">‹</button>
       <button type="button" class="gallery-lightbox-nav gallery-lightbox-next" aria-label="Következő kép">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS: real Google reviews, copied by hand. Each card opens the business's reviews on Google. -->
+<section id="velemenyek">
+  <div class="section-inner">
+    <p class="section-tag" data-i18n="reviews_tag">Vélemények</p>
+    <h2 class="section-title" data-i18n-html="reviews_title">Ügyfeleink <em>mondták</em></h2>
+    <div class="section-line"></div>
+
+    <div class="reviews-carousel">
+      <button type="button" class="reviews-nav reviews-prev" aria-label="Előző vélemény / Previous review">‹</button>
+      <div class="reviews-track" id="reviewsTrack" tabindex="0">
+        <a class="review-card" href="https://search.google.com/local/reviews?placeid=ChIJgcpqaiGl2yQRxZclR4cThKM" target="_blank" rel="noopener noreferrer" title="Google">
+          <div class="review-stars" role="img" aria-label="5 / 5">★★★★★</div>
+          <blockquote class="review-text">Minden rendben ment, időben érkeztek, és nagyon alapos, precíz munkát végeztek. Ráadásul kedvesek és segítőkészek is voltak. Csak ajánlani tudom őket!</blockquote>
+          <div class="review-price"><span data-i18n="reviews_price">Ár</span>: <span data-i18n="rv1_price">40–60 000 Ft</span></div>
+          <div class="review-author">Máté B.<span class="review-source">Google</span></div>
+        </a>
+        <a class="review-card" href="https://search.google.com/local/reviews?placeid=ChIJgcpqaiGl2yQRxZclR4cThKM" target="_blank" rel="noopener noreferrer" title="Google">
+          <div class="review-stars" role="img" aria-label="5 / 5">★★★★★</div>
+          <blockquote class="review-text">Rugalmasan tudtunk egyeztetni, profi munka volt. Nagy plusz pont, hogy nagyon figyeltek arra, hogy ne sértsék meg a hangszereket.</blockquote>
+          <div class="review-price"><span data-i18n="reviews_price">Ár</span>: <span data-i18n="rv3_price">100–120 000 Ft</span></div>
+          <div class="review-author">Ilona A.<span class="review-source">Google</span></div>
+        </a>
+        <a class="review-card" href="https://search.google.com/local/reviews?placeid=ChIJgcpqaiGl2yQRxZclR4cThKM" target="_blank" rel="noopener noreferrer" title="Google">
+          <div class="review-stars" role="img" aria-label="5 / 5">★★★★★</div>
+          <blockquote class="review-text">Meg vagyok elégedve a munkával!</blockquote>
+          <div class="review-author">Flóra B.<span class="review-source">Google</span></div>
+        </a>
+      </div>
+      <button type="button" class="reviews-nav reviews-next" aria-label="Következő vélemény / Next review">›</button>
+    </div>
+
+    <div class="reviews-actions">
+      <a href="https://search.google.com/local/writereview?placeid=ChIJgcpqaiGl2yQRxZclR4cThKM" class="btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="reviews_write">Írjon véleményt</a>
     </div>
   </div>
 </section>
@@ -622,6 +659,12 @@
       r3_price: 'Megbeszélés alapján',
       r3_note: 'Egyedi ajánlat',
       prices_disclaimer: '* Az árak tájékoztató jellegűek, a helyszín adottságaitól függően változhatnak. Pontos ajánlatért kérjük vegye fel velünk a kapcsolatot.',
+      reviews_tag: 'Vélemények',
+      reviews_title: 'Ügyfeleink <em>mondták</em>',
+      reviews_write: 'Írjon véleményt',
+      reviews_price: 'Ár',
+      rv1_price: '40–60 000 Ft',
+      rv3_price: '100–120 000 Ft',
       partner_tag: 'Együttműködő partner',
       partner_headline: 'Kiemelkedő szállítási partnerünk',
       partner_desc: 'A Szonáta Zongoraterem Budapest egyik legismertebb zongora bemutatóterme és szervizközpontja. Rendszeres partnereként számos hangszert szállítottunk már számukra – a precizitással és gondossággal, amelyet az általuk képviselt minőség megkövetel.',
@@ -680,6 +723,12 @@
       r3_price: 'By arrangement',
       r3_note: 'Custom quote',
       prices_disclaimer: '* Prices are indicative and may vary depending on site conditions. Contact us for an exact quote.',
+      reviews_tag: 'Reviews',
+      reviews_title: 'What our <em>customers say</em>',
+      reviews_write: 'Write a review',
+      reviews_price: 'Price',
+      rv1_price: '40,000–60,000 HUF',
+      rv3_price: '100,000–120,000 HUF',
       partner_tag: 'Partner',
       partner_headline: 'Our Key Delivery Partner',
       partner_desc: 'Szon\u00e1ta Zongoraterem is one of Budapest\'s most reputable piano showrooms and service centres. As their regular transport partner, we have delivered numerous instruments for them \u2013 with the precision and care their quality demands.',
@@ -745,5 +794,6 @@
   setLanguage(localStorage.getItem('oi_lang') || 'hu');
 </script>
 <script src="/assets/call-confirm.js?v=2" defer></script>
+<script src="/assets/reviews.js?v=2" defer></script>
 </body>
 </html>
