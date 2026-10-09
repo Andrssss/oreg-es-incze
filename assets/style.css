@@ -660,7 +660,11 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 0.3s;
     }
+    .review-card:hover { border-color: var(--accent); }
     .review-stars { color: var(--accent); font-size: 1.05rem; letter-spacing: 2px; }
     .review-text {
       margin: 0;
@@ -668,11 +672,8 @@
       font-size: 1rem;
       line-height: 1.5;
       flex: 1;
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
     }
+    .review-price { color: var(--accent); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.3px; }
     .review-author { color: var(--white); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.4px; }
     .review-author a { color: inherit; text-decoration: none; }
     .review-author a:hover { color: var(--accent); }
@@ -702,7 +703,8 @@
       #velemenyek { padding-top: 40px; padding-bottom: 40px; }
       .review-card { flex-basis: 100%; padding: 12px 14px; gap: 6px; }
       .review-stars { font-size: 0.9rem; letter-spacing: 1px; }
-      .review-text { font-size: 0.9rem; line-height: 1.45; -webkit-line-clamp: 4; }
+      .review-text { font-size: 0.9rem; line-height: 1.45; }
+      .review-price { font-size: 0.85rem; }
       .review-author { font-size: 0.85rem; }
       .reviews-nav { width: 26px; height: 26px; font-size: 1.1rem; }
       .reviews-carousel { gap: 6px; margin-bottom: 20px; }
