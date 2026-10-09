@@ -32,9 +32,90 @@
     }
 
     /* ── NAVIGATION ── */
-    nav {
+    /* ── CALL CONFIRM DIALOG ── */
+    .call-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(4px);
+    }
+    .call-dialog {
+      width: 100%;
+      max-width: 380px;
+      padding: 32px 28px 28px;
+      text-align: center;
+      background: var(--off-black);
+      border: 1px solid var(--accent);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+    .call-title {
+      font-family: 'Noto Serif', 'Playfair Display', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--pure-white);
+      margin-bottom: 10px;
+    }
+    .call-text {
+      font-size: 1.2rem;
+      color: var(--silver);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+    .call-number {
+      font-family: 'Noto Serif', 'Playfair Display', Georgia, serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .call-actions { display: flex; gap: 12px; }
+    .call-yes, .call-no {
+      flex: 1;
+      padding: 12px 10px;
+      font: inherit;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .call-yes { background: var(--accent); border: 1px solid var(--accent); color: var(--black); }
+    .call-yes:hover { background: #d8bc84; }
+    .call-no { background: transparent; border: 1px solid var(--light-gray); color: var(--white); }
+    .call-no:hover { background: var(--white); color: var(--black); }
+
+    /* ── TOP PHONE BAR ── */
+    .topbar {
       position: fixed;
       top: 0; left: 0; right: 0;
+      z-index: 101;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--black);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .topbar:hover { background: #d8bc84; }
+    .topbar svg { width: 16px; height: 16px; flex: none; }
+
+    nav {
+      position: fixed;
+      top: 36px; left: 0; right: 0;
       z-index: 100;
       background: rgba(10, 10, 10, 0.95);
       backdrop-filter: blur(8px);
@@ -156,7 +237,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 90px 40px 36px;
+      padding: 126px 40px 36px;
       position: relative;
       background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 70%);
       overflow: hidden;
@@ -240,8 +321,8 @@
 
     /* ── SECTION STYLES ── */
     section { padding: 64px 28px; }
-    section[id] { scroll-margin-top: 95px; }
-    #galeria { scroll-margin-top: 120px; }
+    section[id] { scroll-margin-top: 131px; }
+    #galeria { scroll-margin-top: 156px; }
     .section-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -841,7 +922,7 @@
       section { padding: 46px 16px; }
       #hero {
         min-height: calc(100svh - 40px);
-        padding: 74px 16px 20px;
+        padding: 110px 16px 20px;
       }
       .hero-title {
         font-size: clamp(2.4rem, 11vw, 4.2rem);
@@ -960,7 +1041,7 @@
 
     /* ── SUBPAGE LAYOUT (landing pages) ── */
     .subpage-hero {
-      padding: 130px 28px 50px;
+      padding: 166px 28px 50px;
       text-align: center;
       background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 70%);
     }
@@ -991,6 +1072,7 @@
       font-size: 1.3rem;
       line-height: 1.6;
     }
+    .subpage-hero-cta { margin-top: 28px; }
     .prose { color: var(--silver); font-size: 1.3rem; line-height: 1.6; }
     .prose p { margin-bottom: 16px; }
     .prose ul { margin: 0 0 16px 22px; }
@@ -1053,7 +1135,7 @@
       .footer-linkrow a { font-size: 0.72rem; letter-spacing: 0; }
     }
     @media (max-width: 600px) {
-      .subpage-hero { padding: 100px 16px 36px; }
+      .subpage-hero { padding: 136px 16px 36px; }
       .subpage-lead, .prose { font-size: 1.05rem; }
       .subpage-cta p { font-size: 1.05rem; }
     }
