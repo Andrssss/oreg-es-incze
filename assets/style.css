@@ -32,6 +32,67 @@
     }
 
     /* ── NAVIGATION ── */
+    /* ── CALL CONFIRM DIALOG ── */
+    .call-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(4px);
+    }
+    .call-dialog {
+      width: 100%;
+      max-width: 380px;
+      padding: 32px 28px 28px;
+      text-align: center;
+      background: var(--off-black);
+      border: 1px solid var(--accent);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+    .call-title {
+      font-family: 'Noto Serif', 'Playfair Display', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--pure-white);
+      margin-bottom: 10px;
+    }
+    .call-text {
+      font-size: 1.2rem;
+      color: var(--silver);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+    .call-number {
+      font-family: 'Noto Serif', 'Playfair Display', Georgia, serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .call-actions { display: flex; gap: 12px; }
+    .call-yes, .call-no {
+      flex: 1;
+      padding: 12px 10px;
+      font: inherit;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .call-yes { background: var(--accent); border: 1px solid var(--accent); color: var(--black); }
+    .call-yes:hover { background: #d8bc84; }
+    .call-no { background: transparent; border: 1px solid var(--light-gray); color: var(--white); }
+    .call-no:hover { background: var(--white); color: var(--black); }
+
+
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -150,7 +211,7 @@
 
     /* ── HERO ── */
     #hero {
-      min-height: calc(100svh - 40px);
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -547,6 +608,89 @@
       text-align: center;
     }
 
+    /* ── REVIEWS ── */
+    #velemenyek { background: var(--black); }
+    .reviews-carousel {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .reviews-track {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: stretch;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .reviews-track::-webkit-scrollbar { display: none; }
+    .reviews-track:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+    .review-card {
+      flex: 0 0 calc((100% - 32px) / 3);
+      scroll-snap-align: start;
+      margin: 0;
+      padding: 16px 18px;
+      background: var(--dark-gray);
+      border: 1px solid #2a2a2a;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 0.3s;
+    }
+    .review-card:hover { border-color: var(--accent); }
+    .review-stars { color: var(--accent); font-size: 1.05rem; letter-spacing: 2px; }
+    .review-text {
+      margin: 0;
+      color: var(--silver);
+      font-size: 1rem;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .review-price { color: var(--accent); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.3px; }
+    .review-author { color: var(--white); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.4px; }
+    .review-author a { color: inherit; text-decoration: none; }
+    .review-author a:hover { color: var(--accent); }
+    .review-source { color: var(--light-gray); font-weight: 400; margin-left: 8px; }
+    .review-source::before { content: "· "; }
+    .reviews-nav {
+      flex: none;
+      align-self: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--light-gray);
+      background: transparent;
+      color: var(--white);
+      font-size: 1.6rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, opacity 0.3s;
+    }
+    .reviews-nav:hover:not(:disabled) { background: var(--white); color: var(--black); }
+    .reviews-nav:disabled { opacity: 0.3; cursor: default; }
+    .reviews-nav[hidden] { display: none; }
+    .reviews-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+    @media (max-width: 1000px) {
+      .review-card { flex-basis: calc((100% - 16px) / 2); }
+    }
+    @media (max-width: 640px) {
+      #velemenyek { padding-top: 40px; padding-bottom: 40px; }
+      .review-card { flex-basis: 100%; padding: 12px 14px; gap: 6px; }
+      .review-stars { font-size: 0.9rem; letter-spacing: 1px; }
+      .review-text { font-size: 0.9rem; line-height: 1.45; }
+      .review-price { font-size: 0.85rem; }
+      .review-author { font-size: 0.85rem; }
+      .reviews-nav { width: 26px; height: 26px; font-size: 1.1rem; }
+      .reviews-carousel { gap: 6px; margin-bottom: 20px; }
+      .reviews-actions .btn-primary { padding: 7px 20px; font-size: 1rem; letter-spacing: 1px; }
+    }
+
     /* ── PRICES ── */
     #arak {
       background: var(--off-black);
@@ -840,7 +984,7 @@
       nav { padding: 0 20px; }
       section { padding: 46px 16px; }
       #hero {
-        min-height: calc(100svh - 40px);
+        min-height: 100svh;
         padding: 74px 16px 20px;
       }
       .hero-title {
@@ -991,6 +1135,7 @@
       font-size: 1.3rem;
       line-height: 1.6;
     }
+    .subpage-hero-cta { margin-top: 28px; }
     .prose { color: var(--silver); font-size: 1.3rem; line-height: 1.6; }
     .prose p { margin-bottom: 16px; }
     .prose ul { margin: 0 0 16px 22px; }
@@ -1002,6 +1147,8 @@
       margin: 30px 0 12px;
     }
     .prose h3:first-child { margin-top: 0; }
+    .prose ol { margin: 0 0 16px 22px; }
+    .prose h4 { font-size: 1.15rem; color: var(--pure-white); margin: 18px 0 6px; }
     .subpage-cta {
       margin-top: 40px;
       padding: 32px;
@@ -1028,7 +1175,8 @@
       .footer-linkrow { padding-left: calc((100% - 900px) / 2); padding-right: calc((100% - 900px) / 2); }
     }
     @media (max-width: 640px) {
-      .footer-linkrow { grid-template-columns: repeat(2, 1fr); padding: 28px 20px 20px; }
+      .footer-linkrow { grid-template-columns: repeat(4, auto); justify-content: space-between; gap: 20px 10px; padding: 28px 12px 20px; }
+      .footer-linkrow > .fl-col { gap: 8px; }
     }
     .footer-linkrow h4 {
       color: var(--accent);
@@ -1045,8 +1193,45 @@
       letter-spacing: 0.2px;
     }
     .footer-linkrow a:hover { color: var(--accent); }
+    @media (max-width: 640px) {
+      .footer-linkrow h4 { font-size: 0.6rem; letter-spacing: 0.8px; }
+      .footer-linkrow a { font-size: 0.72rem; letter-spacing: 0; }
+    }
     @media (max-width: 600px) {
       .subpage-hero { padding: 100px 16px 36px; }
       .subpage-lead, .prose { font-size: 1.05rem; }
       .subpage-cta p { font-size: 1.05rem; }
+    }
+
+    /* ── FŐOLDAL: EGYENLETES TÉRKÖZ-RITMUS ──
+       Minden szekció és cím–tartalom távolság ugyanabból a skálából jön (csak a főoldalon, body.home). */
+    .home {
+      --sec: clamp(56px, 8vw, 96px);
+      --head: 28px;
+      --block: 32px;
+      --side: 24px;
+    }
+    .home section,
+    .home .partner-strip { padding: var(--sec) var(--side); }
+    .home .section-tag { margin-bottom: 12px; font-size: 1.15rem; }
+    .home .section-title { margin-bottom: 12px; }
+    .home .section-line { margin-bottom: var(--head); }
+    .home .about-grid { gap: var(--block) 56px; align-items: start; }
+    .home .about-text p:last-child { margin-bottom: 0; }
+    .home .gallery-block { margin-top: var(--block); gap: 0; }
+    .home .gallery-header { margin-bottom: 12px; }
+    .home .gallery-title { margin-bottom: 0; }
+    .home .gallery-thumbs { gap: 16px; }
+    .home .price-notes,
+    .home .price-disclaimer { margin-top: var(--block); }
+    .home .partner-strip .section-inner { gap: 20px; }
+    .home .partner-strip .section-tag { font-size: 1.15rem; margin: 0; }
+    .home .contact-stack { padding: 0; gap: 24px; }
+    .home #kapcsolat .section-line { margin-bottom: var(--head); }
+    .home .footer-linkrow { padding-block: var(--block); }
+    @media (max-width: 900px) {
+      .home { --sec: 56px; --head: 24px; --block: 28px; --side: 16px; }
+      .home .about-grid { gap: var(--block); }
+      .home .gallery-thumbs { gap: 12px; }
+      .home .partner-logo-img { max-width: min(220px, 64vw); }
     }
