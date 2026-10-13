@@ -13,8 +13,8 @@ Az oldal tartalma magyar nyelvű. Magyar nyelvű kérdésre magyarul válaszolj.
 
 ## Árak (bruttó, tájékoztató jellegű)
 
-- Pianínó szállítása: 39 000 Ft-tól, emeletenként +5 000 Ft
-- Hangversenyzongora (kisgrand, nagygrand) szállítása: 59 000 Ft-tól, emeletenként +9 000 Ft
+- Pianínó szállítása: bruttó 39 000 Ft-tól, emeletenként +5 000 Ft
+- Hangversenyzongora (kisgrand, nagygrand) szállítása: bruttó 59 000 Ft-tól, emeletenként +9 000 Ft
 - Csembaló és más nagytestű hangszer: egyedi árajánlat
 - Budapesten kívül, Pest megyén belül: +6 000 Ft
 - Pest megyén kívül: +250 Ft/km
@@ -35,8 +35,8 @@ Az árak a helyszíni körülményektől függnek, pontos árajánlatért érdem
 
 ## Gyakori kérdések
 
-- Mennyibe kerül egy pianínó szállítása? 39 000 Ft-tól, emeletenként +5 000 Ft.
-- Mennyibe kerül egy hangversenyzongora szállítása? 59 000 Ft-tól, emeletenként +9 000 Ft.
+- Mennyibe kerül egy pianínó szállítása? Bruttó 39 000 Ft-tól, emeletenként +5 000 Ft.
+- Mennyibe kerül egy hangversenyzongora szállítása? Bruttó 59 000 Ft-tól, emeletenként +9 000 Ft.
 - Felviszik a zongorát emeletre? Igen, emeletenkénti felárral.
 - Vállalnak szállítást Budapesten kívülre? Igen, országosan: Pest megyében +6 000 Ft, Pest megyén kívül +250 Ft/km.
 - Hétvégén is dolgoznak? Igen, a hét minden napján, ünnepnapokon is.
