@@ -866,6 +866,37 @@
       margin-top: 14px;
     }
 
+    /* ── PARTNER BADGE (bottom right) ── */
+    .partner-badge {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 90;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 12px 6px;
+      background: rgba(10, 10, 10, 0.88);
+      border: 1px solid #2e2e2e;
+      backdrop-filter: blur(6px);
+      text-decoration: none;
+    }
+    .partner-badge span {
+      font-size: 0.55rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--silver);
+      line-height: 1;
+    }
+    .partner-badge img { display: block; width: 104px; height: auto; }
+    .partner-badge:hover { border-color: var(--accent); }
+    .partner-badge:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    @media (max-width: 600px) {
+      .partner-badge { right: 8px; bottom: 8px; padding: 6px 9px 5px; }
+      .partner-badge img { width: 78px; }
+    }
+
     /* ── PARTNER STRIP ── */
     .partner-strip {
       background: var(--off-black);
