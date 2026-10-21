@@ -164,6 +164,32 @@
       align-items: center;
       gap: 10px;
     }
+    /* ── QUICK CONTACT (phone + e-mail in the nav) ── */
+    .nav-quick {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-right: 6px;
+    }
+    .nav-quick a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-quick svg { width: 22px; height: 22px; color: var(--accent); }
+    .nav-quick span {
+      font-size: 0.55rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--silver);
+      line-height: 1;
+    }
+    .nav-quick a:hover span, .nav-quick a:focus-visible span { color: var(--white); }
+    .nav-quick a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
     .lang-switch {
       display: inline-flex;
       border: 2px solid #4a4a4a;
@@ -998,6 +1024,14 @@
       .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     }
     @media (max-width: 600px) {
+      .nav-logo {
+        position: static;
+        transform: none;
+        font-size: 1.05rem;
+        letter-spacing: 1px;
+      }
+      .nav-quick { gap: 12px; margin-right: 2px; }
+      .nav-quick span { display: none; }
       .hero-title,
       .hero-subtitle,
       .section-title,
