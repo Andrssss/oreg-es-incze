@@ -1032,6 +1032,7 @@
       }
       .nav-quick { gap: 12px; margin-right: 2px; }
       .nav-quick span { display: none; }
+      .nav-quick a + a { display: none; }
       .hero-title,
       .hero-subtitle,
       .section-title,
