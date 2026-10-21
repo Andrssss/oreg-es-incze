@@ -93,10 +93,33 @@
     .call-no:hover { background: var(--white); color: var(--black); }
 
 
-    .top-quick { display: none; }
-    nav {
+    body { padding-top: 30px; }
+    .top-quick {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
       position: fixed;
       top: 0; left: 0; right: 0;
+      height: 30px;
+      padding: 0 20px;
+      z-index: 101;
+      background: #161513;
+      border-bottom: 1px solid #222;
+    }
+    .top-quick a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    nav {
+      position: fixed;
+      top: 30px; left: 0; right: 0;
       z-index: 100;
       background: rgba(10, 10, 10, 0.95);
       backdrop-filter: blur(8px);
@@ -678,29 +701,6 @@
     .reviews-nav[hidden] { display: none; }
     .reviews-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
     @media (max-width: 1000px) {
-      body { padding-top: 30px; }
-      nav { top: 30px; }
-      .top-quick {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        position: fixed;
-        top: 0; left: 0; right: 0;
-        height: 30px;
-        padding: 0 20px;
-        z-index: 101;
-        background: #161513;
-        border-bottom: 1px solid #222;
-      }
-      .top-quick a {
-        color: var(--accent);
-        text-decoration: none;
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.3px;
-        white-space: nowrap;
-      }
       .review-card { flex-basis: calc((100% - 16px) / 2); }
     }
     @media (max-width: 640px) {
