@@ -93,6 +93,7 @@
     .call-no:hover { background: var(--white); color: var(--black); }
 
 
+    .top-quick { display: none; }
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -164,7 +165,6 @@
       align-items: center;
       gap: 10px;
     }
-    .menu-contact { display: none; }
     .lang-switch {
       display: inline-flex;
       border: 2px solid #4a4a4a;
@@ -678,6 +678,29 @@
     .reviews-nav[hidden] { display: none; }
     .reviews-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
     @media (max-width: 1000px) {
+      body { padding-top: 30px; }
+      nav { top: 30px; }
+      .top-quick {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: 30px;
+        padding: 0 20px;
+        z-index: 101;
+        background: #161513;
+        border-bottom: 1px solid #222;
+      }
+      .top-quick a {
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        white-space: nowrap;
+      }
       .review-card { flex-basis: calc((100% - 16px) / 2); }
     }
     @media (max-width: 640px) {
@@ -969,13 +992,6 @@
         gap: 14px;
       }
       nav.menu-open .nav-links { display: flex; }
-      .menu-contact { display: block; }
-      .nav-links a[href^="tel:"], .nav-links a[href^="mailto:"] {
-        color: var(--accent);
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        text-transform: none;
-      }
       .nav-links a {
         display: block;
         font-size: 1.3rem;
