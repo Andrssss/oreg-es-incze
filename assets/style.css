@@ -117,6 +117,29 @@
       white-space: nowrap;
     }
 
+    .top-quick-label { display: none; }
+    @media (min-width: 1001px) {
+      body { padding-top: 40px; }
+      .top-quick {
+        flex-direction: row;
+        height: 40px;
+        padding: 0 40px;
+        gap: 36px;
+      }
+      .top-quick-label {
+        display: block;
+        order: 0;
+        margin-right: auto;
+        font-size: 0.8rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--silver);
+      }
+      .top-quick a { order: 1; font-size: 1.05rem; letter-spacing: 0.5px; }
+      .top-quick a[href^="mailto:"] { order: 2; }
+      body > nav { top: 40px; }
+    }
+
     nav {
       position: fixed;
       top: 30px; left: 0; right: 0;
