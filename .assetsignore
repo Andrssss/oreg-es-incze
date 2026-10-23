@@ -1,0 +1,15 @@
+# Repo files that are not part of the site (not served by Cloudflare)
+.git
+.github
+.claude
+.gitignore
+.assetsignore
+wrangler.jsonc
+CLAUDE.md
+README.md
+scripts
+docs
+node_modules
+package.json
+package-lock.json
+compress-images.js
