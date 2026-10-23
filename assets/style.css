@@ -164,6 +164,25 @@
       align-items: center;
       gap: 10px;
     }
+
+    /* ── PHONE NUMBER: in the nav on desktop, slim bar above the nav on mobile ── */
+    .nav-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-right: 6px;
+      color: var(--accent);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-phone:hover { color: #d8bc84; }
+    .nav-phone svg,
+    .phonebar svg { width: 16px; height: 16px; flex: none; }
+    .phonebar { display: none; }
     .lang-switch {
       display: inline-flex;
       border: 2px solid #4a4a4a;
@@ -1242,4 +1261,35 @@
       .home .about-grid { gap: var(--block); }
       .home .gallery-thumbs { gap: 12px; }
       .home .partner-logo-img { max-width: min(220px, 64vw); }
+    }
+
+    /* ── PHONE NUMBER (responsive, kept last so it wins over earlier nav/section rules) ── */
+    @media (min-width: 1001px) and (max-width: 1360px) {
+      .nav-links { gap: 22px; }
+      .nav-links a { font-size: 1.05rem; letter-spacing: 1.2px; }
+    }
+    @media (max-width: 1000px) {
+      .nav-phone { display: none; }
+      .phonebar {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 101;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: #111;
+        border-bottom: 1px solid #222;
+        color: var(--accent);
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-decoration: none;
+      }
+      .phonebar svg { width: 15px; height: 15px; }
+      body { padding-top: 34px; }
+      nav { top: 34px; }
+      section[id] { scroll-margin-top: 129px; }
+      #galeria { scroll-margin-top: 154px; }
     }

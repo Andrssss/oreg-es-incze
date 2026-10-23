@@ -1,4 +1,4 @@
-// Asks for confirmation (in the site's own style) before the top phone bar starts a call.
+// Asks for confirmation (in the site's own style) before a phone link in the header starts a call.
 (function () {
   var en = document.documentElement.lang === 'en';
   var t = en
@@ -48,7 +48,7 @@
   }
 
   document.addEventListener('click', function (e) {
-    var link = e.target.closest('a.topbar');
+    var link = e.target.closest('a.phonebar, a.nav-phone');
     if (!link) return;
     e.preventDefault();
     open(link.getAttribute('href'), link.textContent.trim());
