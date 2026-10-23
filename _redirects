@@ -1,0 +1,30 @@
+# Cloudflare: permanent (301) redirects, same as Netlify did for directory pages.
+# Without these, /gyik -> /gyik/ is a 307 (temporary).
+/en /en/ 301
+/en/faq /en/faq/ 301
+/en/instrument-moving /en/instrument-moving/ 301
+/en/piano-moving-budaors /en/piano-moving-budaors/ 301
+/en/piano-moving-budapest /en/piano-moving-budapest/ 301
+/en/piano-moving-erd /en/piano-moving-erd/ 301
+/en/piano-moving-godollo /en/piano-moving-godollo/ 301
+/en/piano-moving-nationwide /en/piano-moving-nationwide/ 301
+/en/piano-moving-pest-county /en/piano-moving-pest-county/ 301
+/en/piano-moving-prices /en/piano-moving-prices/ 301
+/en/piano-moving-szentendre /en/piano-moving-szentendre/ 301
+/en/piano-moving-tips /en/piano-moving-tips/ 301
+/en/upright-piano-moving /en/upright-piano-moving/ 301
+/gyik /gyik/ 301
+/hangszerszallitas /hangszerszallitas/ 301
+/pianino-szallitas /pianino-szallitas/ 301
+/zongoraszallitas-arak /zongoraszallitas-arak/ 301
+/zongoraszallitas-budaors /zongoraszallitas-budaors/ 301
+/zongoraszallitas-budapest /zongoraszallitas-budapest/ 301
+/zongoraszallitas-erd /zongoraszallitas-erd/ 301
+/zongoraszallitas-godollo /zongoraszallitas-godollo/ 301
+/zongoraszallitas-orszagosan /zongoraszallitas-orszagosan/ 301
+/zongoraszallitas-pest-megye /zongoraszallitas-pest-megye/ 301
+/zongoraszallitas-szentendre /zongoraszallitas-szentendre/ 301
+/zongoraszallitas-tippek /zongoraszallitas-tippek/ 301
+# index.html aliases point at the clean URL
+/index.html / 301
+/*/index.html /:splat/ 301
