@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hangszerszallitas",
+  "main": "worker.js",
+  "compatibility_date": "2026-10-01",
+  "observability": { "enabled": true },
+  // The site itself: this folder, served as static files (what is left out is in .assetsignore).
+  // run_worker_first makes the Worker see every page request, so it can count the visit before
+  // handing the file over; without it Cloudflare answers a matching file on its own and the Worker
+  // never runs. The picture folders skip the Worker: they are most of the bytes and say nothing
+  // about who visited.
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": ["/*", "!/pictures/*", "!/assets/*"]
+  },
+  // Visit counters go into the pestidev.hu state bucket, where its owner-only /admin/traffic page
+  // reads them (traffic/hangszerszallitas.hu/<day>/<instance>.json). Create nothing: the bucket exists.
+  "r2_buckets": [{ "binding": "APP_STATE", "bucket_name": "allasfigyelo-app-state" }],
+  // Deploying with these attaches the hostnames to the Worker; Cloudflare creates the DNS records
+  // itself, so an existing A/AAAA/CNAME record for either name has to be deleted first. www is
+  // redirected to the apex in worker.js.
+  "routes": [
+    { "pattern": "hangszerszallitas.hu", "custom_domain": true },
+    { "pattern": "www.hangszerszallitas.hu", "custom_domain": true }
+  ]
+}

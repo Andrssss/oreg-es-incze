@@ -1,0 +1,19 @@
+# Not part of the site: kept out of the static files Cloudflare serves.
+.assetsignore
+.claude
+.git
+.github
+.gitignore
+.ignore
+.netlify
+node_modules
+graft
+scripts
+docs
+*.md
+package.json
+package-lock.json
+compress-images.js
+wrangler.jsonc
+worker.js
+traffic.js
