@@ -32,6 +32,67 @@
     }
 
     /* ── NAVIGATION ── */
+    /* ── CALL CONFIRM DIALOG ── */
+    .call-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(4px);
+    }
+    .call-dialog {
+      width: 100%;
+      max-width: 380px;
+      padding: 32px 28px 28px;
+      text-align: center;
+      background: var(--off-black);
+      border: 1px solid var(--accent);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+    .call-title {
+      font-family: 'Noto Serif', 'Playfair Display', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--pure-white);
+      margin-bottom: 10px;
+    }
+    .call-text {
+      font-size: 1.2rem;
+      color: var(--silver);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+    .call-number {
+      font-family: 'Noto Serif', 'Playfair Display', Georgia, serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .call-actions { display: flex; gap: 12px; }
+    .call-yes, .call-no {
+      flex: 1;
+      padding: 12px 10px;
+      font: inherit;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .call-yes { background: var(--accent); border: 1px solid var(--accent); color: var(--black); }
+    .call-yes:hover { background: #d8bc84; }
+    .call-no { background: transparent; border: 1px solid var(--light-gray); color: var(--white); }
+    .call-no:hover { background: var(--white); color: var(--black); }
+
+
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -103,6 +164,25 @@
       align-items: center;
       gap: 10px;
     }
+
+    /* ── PHONE NUMBER: in the nav on desktop, slim bar above the nav on mobile ── */
+    .nav-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-right: 6px;
+      color: var(--accent);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-phone:hover { color: #d8bc84; }
+    .nav-phone svg,
+    .phonebar svg { width: 16px; height: 16px; flex: none; }
+    .phonebar { display: none; }
     .lang-switch {
       display: inline-flex;
       border: 2px solid #4a4a4a;
@@ -150,7 +230,7 @@
 
     /* ── HERO ── */
     #hero {
-      min-height: calc(100svh - 40px);
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -547,6 +627,97 @@
       text-align: center;
     }
 
+    /* ── REVIEWS ── */
+    #velemenyek { background: var(--black); }
+    .reviews-carousel {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .reviews-track {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: stretch;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .reviews-track::-webkit-scrollbar { display: none; }
+    .reviews-track:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+    .review-card {
+      flex: 0 0 calc((100% - 32px) / 3);
+      scroll-snap-align: start;
+      margin: 0;
+      padding: 16px 18px;
+      background: var(--dark-gray);
+      border: 1px solid var(--accent);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 0.3s;
+    }
+    .review-card:hover { border-color: #d8bc84; }
+    .review-stars { color: var(--accent); font-size: 1.05rem; letter-spacing: 2px; }
+    .review-text {
+      margin: 0;
+      color: var(--silver);
+      font-size: 1rem;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .review-price { color: var(--accent); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.3px; }
+    .review-author { color: var(--white); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.4px; }
+    .review-author a { color: inherit; text-decoration: none; }
+    .review-author a:hover { color: var(--accent); }
+    .review-source { color: var(--light-gray); font-weight: 400; margin-left: 8px; }
+    .review-source::before {
+      content: "";
+      display: inline-block;
+      width: 1.05em;
+      height: 1.05em;
+      margin-right: 6px;
+      vertical-align: -0.17em;
+      background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Cpath fill=%22%23EA4335%22 d=%22M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z%22/%3E%3Cpath fill=%22%234285F4%22 d=%22M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z%22/%3E%3Cpath fill=%22%23FBBC05%22 d=%22M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z%22/%3E%3Cpath fill=%22%2334A853%22 d=%22M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z%22/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+    .reviews-nav {
+      flex: none;
+      align-self: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--light-gray);
+      background: transparent;
+      color: var(--white);
+      font-size: 1.6rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, opacity 0.3s;
+    }
+    .reviews-nav:hover:not(:disabled) { background: var(--white); color: var(--black); }
+    .reviews-nav:disabled { opacity: 0.3; cursor: default; }
+    .reviews-nav[hidden] { display: none; }
+    .reviews-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+    @media (max-width: 1000px) {
+      .review-card { flex-basis: calc((100% - 16px) / 2); }
+    }
+    @media (max-width: 640px) {
+      #velemenyek { padding-top: 40px; padding-bottom: 40px; }
+      .review-card { flex-basis: 100%; padding: 12px 14px; gap: 6px; }
+      .review-stars { font-size: 0.9rem; letter-spacing: 1px; }
+      .review-text { font-size: 0.9rem; line-height: 1.45; }
+      .review-price { font-size: 0.85rem; }
+      .review-author { font-size: 0.85rem; }
+      .reviews-nav { width: 26px; height: 26px; font-size: 1.1rem; }
+      .reviews-carousel { gap: 6px; margin-bottom: 20px; }
+      .reviews-actions .btn-primary { padding: 7px 20px; font-size: 1rem; letter-spacing: 1px; }
+    }
+
     /* ── PRICES ── */
     #arak {
       background: var(--off-black);
@@ -840,7 +1011,7 @@
       nav { padding: 0 20px; }
       section { padding: 46px 16px; }
       #hero {
-        min-height: calc(100svh - 40px);
+        min-height: 100svh;
         padding: 74px 16px 20px;
       }
       .hero-title {
@@ -991,6 +1162,7 @@
       font-size: 1.3rem;
       line-height: 1.6;
     }
+    .subpage-hero-cta { margin-top: 28px; }
     .prose { color: var(--silver); font-size: 1.3rem; line-height: 1.6; }
     .prose p { margin-bottom: 16px; }
     .prose ul { margin: 0 0 16px 22px; }
@@ -1089,4 +1261,35 @@
       .home .about-grid { gap: var(--block); }
       .home .gallery-thumbs { gap: 12px; }
       .home .partner-logo-img { max-width: min(220px, 64vw); }
+    }
+
+    /* ── PHONE NUMBER (responsive, kept last so it wins over earlier nav/section rules) ── */
+    @media (min-width: 1001px) and (max-width: 1360px) {
+      .nav-links { gap: 22px; }
+      .nav-links a { font-size: 1.05rem; letter-spacing: 1.2px; }
+    }
+    @media (max-width: 1000px) {
+      .nav-phone { display: none; }
+      .phonebar {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 101;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: #111;
+        border-bottom: 1px solid #222;
+        color: var(--accent);
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-decoration: none;
+      }
+      .phonebar svg { width: 15px; height: 15px; }
+      body { padding-top: 34px; }
+      nav { top: 34px; }
+      section[id] { scroll-margin-top: 129px; }
+      #galeria { scroll-margin-top: 154px; }
     }

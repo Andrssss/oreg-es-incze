@@ -1,4 +1,4 @@
-# Not part of the site: kept out of the static files Cloudflare serves.
+# Repo files that are not part of the site (not served by Cloudflare)
 .assetsignore
 .claude
 .git
