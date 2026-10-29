@@ -14,6 +14,6 @@ docs
 package.json
 package-lock.json
 compress-images.js
-wrangler.jsonc
+wrangler*.jsonc
 worker.js
 traffic.js
