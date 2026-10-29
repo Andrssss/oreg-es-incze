@@ -31,6 +31,7 @@ const CRAWLERS = [
   ['CCBot', /CCBot/i],
   ['Cohere', /cohere-ai/i],
   ['YouBot', /YouBot/i],
+  ['Facebook előnézet', /facebookexternalhit|Facebot/i],
   ['Googlebot', /Googlebot|AdsBot-Google|Mediapartners-Google/i],
   ['Bingbot', /bingbot|BingPreview/i],
 ];
@@ -47,13 +48,26 @@ const SOURCES = [
   ['Bing', /(^|\.)bing\.com$|^bing/],
   ['DuckDuckGo', /duckduckgo\.com$|^duckduckgo/],
   ['Ecosia', /ecosia\.org$/],
-  ['Facebook', /(^|\.)(facebook\.com|fb\.com|l\.facebook\.com)$|^facebook/],
+  ['Facebook', /(^|\.)(facebook\.com|fb\.com|fb\.me|messenger\.com)$|^facebook/],
+  ['Instagram', /(^|\.)instagram\.com$|^instagram/],
+  ['TikTok', /(^|\.)tiktok\.com$|^tiktok/],
   ['LinkedIn', /linkedin\.com$|^lnkd\.in$|^linkedin/],
   ['X', /(^|\.)(x\.com|twitter\.com|t\.co)$/],
   ['Reddit', /reddit\.com$/],
 ];
 
 const TAG_PARAMS = ['utm_source', 'source', 'ref'];
+
+// Click ids the platforms add to the links they send people through: they survive where the Referer does not
+// (a link opened from the Facebook or Instagram app usually arrives with no Referer, but with fbclid).
+const CLICK_IDS = [
+  ['fbclid', 'Facebook'],
+  ['igshid', 'Instagram'],
+  ['ttclid', 'TikTok'],
+  ['gclid', 'Google'],
+  ['msclkid', 'Bing'],
+  ['twclid', 'X'],
+];
 
 /** Where a page view came from; null for a view from this site itself. A tag in the URL wins over the Referer. */
 function sourceOf(url, referer) {
@@ -62,6 +76,8 @@ function sourceOf(url, referer) {
     const hit = SOURCES.find(([, re]) => re.test(tag));
     return { name: hit ? hit[0] : `címke: ${tag}`, host: null };
   }
+  const clicked = CLICK_IDS.find(([param]) => url.searchParams.has(param));
+  if (clicked) return { name: clicked[1], host: null };
   if (!referer) return { name: 'Közvetlen', host: null };
   let host;
   try {
