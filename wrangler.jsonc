@@ -1,7 +1,25 @@
 {
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // The Worker that already serves hangszerszallitas.hu (its routes live in the dashboard and stay as
+  // they are); deploying under this name replaces its code, not its routes.
   "name": "oreg-es-incze",
+  "main": "worker.js",
   "compatibility_date": "2026-10-01",
+  "observability": { "enabled": true },
+  // No *.workers.dev address and no preview URLs: only hangszerszallitas.hu (its routes live in the dashboard).
+  "workers_dev": false,
+  "preview_urls": false,
+  // The site itself: this folder, served as static files (what is left out is in .assetsignore), with
+  // the redirects in _redirects and the cache headers in _headers. run_worker_first makes the Worker see
+  // every page request, so it can count the visit before handing the file over; without it Cloudflare
+  // answers a matching file on its own and the Worker never runs. The static folders skip the Worker:
+  // they are most of the bytes and say nothing about who visited.
   "assets": {
-    "directory": "./"
-  }
+    "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": ["/*", "!/pictures/*", "!/assets/*", "!/fonts/*"]
+  },
+  // Visit counters go into the pestidev.hu state bucket, where its owner-only /admin/traffic page
+  // reads them (traffic/hangszerszallitas.hu/<day>/<instance>.json). The bucket exists.
+  "r2_buckets": [{ "binding": "APP_STATE", "bucket_name": "allasfigyelo-app-state" }]
 }
