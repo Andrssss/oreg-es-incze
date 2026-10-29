@@ -6,6 +6,7 @@
 .gitignore
 .ignore
 .netlify
+.wrangler
 node_modules
 graft
 scripts

@@ -92,7 +92,9 @@ function bump(map, key) {
   else if (Object.keys(map).length < MAX_KEYS) map[key] = 1;
 }
 
-const instance = crypto.randomUUID().slice(0, 8);
+// Made on first use, inside a request: the Workers runtime refuses random values in global scope.
+let instance;
+const instanceId = () => (instance ??= crypto.randomUUID().slice(0, 8));
 const days = new Map();
 const dirty = new Set();
 let lastFlush = 0;
@@ -131,7 +133,7 @@ async function flush(env) {
   for (const day of [...dirty]) {
     dirty.delete(day);
     try {
-      await env.APP_STATE.put(`traffic/${SITE}/${day}/${instance}.json`, JSON.stringify(days.get(day)));
+      await env.APP_STATE.put(`traffic/${SITE}/${day}/${instanceId()}.json`, JSON.stringify(days.get(day)));
     } catch {
       // Bucket unreachable: keep counting in memory, the next flush carries it.
       dirty.add(day);
