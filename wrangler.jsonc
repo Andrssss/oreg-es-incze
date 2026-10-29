@@ -6,6 +6,9 @@
   "main": "worker.js",
   "compatibility_date": "2026-10-01",
   "observability": { "enabled": true },
+  // No *.workers.dev address and no preview URLs: only hangszerszallitas.hu (its routes live in the dashboard).
+  "workers_dev": false,
+  "preview_urls": false,
   // The site itself: this folder, served as static files (what is left out is in .assetsignore), with
   // the redirects in _redirects and the cache headers in _headers. run_worker_first makes the Worker see
   // every page request, so it can count the visit before handing the file over; without it Cloudflare
